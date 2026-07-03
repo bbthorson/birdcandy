@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import Footer from '../components/layout/Footer.astro';
 ---
 
 <BaseLayout>
@@ -224,35 +225,6 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   </section>
 
   <!-- FOOTER -->
-  <footer class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 border-t border-rule py-8 text-xs text-fg-tertiary">
-    <span>Bird Candy &copy; 2026</span>
-    <ul class="flex gap-5 list-none p-0">
-      <li><a href="https://bsky.app/profile/birdcandy.com" class="text-fg-tertiary no-underline transition-colors duration-150 hover:text-fg" target="_blank" rel="noopener">Bluesky</a></li>
-    </ul>
-  </footer>
+  <Footer />
 
 </BaseLayout>
-
-<script>
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-      }
-    });
-  }, { threshold: 0.1 });
-
-  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
-</script>
-
-<style>
-  .fade-in {
-    opacity: 0;
-    transform: translateY(16px);
-    transition: opacity 0.6s ease, transform 0.6s ease;
-  }
-  .fade-in.visible {
-    opacity: 1;
-    transform: translateY(0);
-  }
-</style>

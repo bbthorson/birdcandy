@@ -1,10 +1,21 @@
 ---
+const currentPath = Astro.url.pathname;
+
+// Root-relative hashes so section links work from subpages too.
 const sections = [
-  { href: '#the-shift', label: 'The Shift' },
-  { href: '#capabilities', label: 'What We Do' },
-  { href: '#why-studio', label: 'Why a Studio' },
-  { href: '#contact', label: 'Contact' },
+  { href: '/#the-shift', label: 'The Shift' },
+  { href: '/#capabilities', label: 'What We Do' },
+  { href: '/#why-studio', label: 'Why a Studio' },
+  { href: '/#contact', label: 'Contact' },
 ];
+
+const pages = [
+  { href: '/work', label: 'Work' },
+  { href: '/thesis', label: 'Thesis' },
+];
+
+const isActive = (href: string) =>
+  currentPath === href || currentPath === `${href}/`;
 ---
 
 <aside class="sidebar hidden lg:flex sticky top-0 h-screen flex-col justify-between border-r border-rule px-8 py-10">
@@ -26,6 +37,24 @@ const sections = [
             <a
               href={item.href}
               class="sidebar-link block py-1 text-sm text-fg-tertiary no-underline transition-colors duration-150 hover:text-fg"
+            >
+              {item.label}
+            </a>
+          </li>
+        ))}
+      </ul>
+
+      <div class="my-4 h-px w-8 bg-rule"></div>
+
+      <ul class="flex flex-col gap-1.5 list-none p-0">
+        {pages.map((item) => (
+          <li>
+            <a
+              href={item.href}
+              class:list={[
+                "block py-1 text-sm no-underline transition-colors duration-150 hover:text-fg",
+                isActive(item.href) ? "text-fg" : "text-fg-tertiary",
+              ]}
             >
               {item.label}
             </a>
