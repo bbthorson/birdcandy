@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bird Candy</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --fg: #111;
+      --fg-secondary: #666;
+      --fg-tertiary: #999;
+      --bg: #f5f5f3;
+      --rule: #ddd;
+      --accent: #111;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Inter', -apple-system, sans-serif;
+      color: var(--fg);
+      background: var(--bg);
+      -webkit-font-smoothing: antialiased;
+      font-size: 15px;
+      line-height: 1.6;
+    }
+
+    ::selection { background: #111; color: #f5f5f3; }
+
+    a { color: inherit; }
+
+    /* LAYOUT */
+    .page {
+      display: grid;
+      grid-template-columns: 240px 1fr;
+      min-height: 100vh;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    /* SIDEBAR */
+    .sidebar {
+      padding: 40px 32px;
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      border-right: 1px solid var(--rule);
+    }
+
+    .sidebar-top {}
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      margin-bottom: 48px;
+    }
+
+    .logo-mark {
+      width: 28px;
+      height: 28px;
+      border-radius: 6px;
+      background: var(--fg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .logo-mark svg {
+      width: 16px;
+      height: 16px;
+      fill: var(--bg);
+    }
+
+    .logo-text {
+      font-weight: 500;
+      font-size: 15px;
+      letter-spacing: -0.02em;
+    }
+
+    .sidebar-nav {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .sidebar-nav a {
+      display: block;
+      text-decoration: none;
+      font-size: 14px;
+      color: var(--fg-tertiary);
+      padding: 4px 0;
+      transition: color 0.15s;
+    }
+
+    .sidebar-nav a:hover,
+    .sidebar-nav a.active {
+      color: var(--fg);
+    }
+
+    .sidebar-divider {
+      width: 32px;
+      height: 1px;
+      background: var(--rule);
+      margin: 16px 0;
+    }
+
+    .sidebar-bottom {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .sidebar-handle {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      color: var(--fg-tertiary);
+      text-decoration: none;
+      transition: color 0.15s;
+    }
+
+    .sidebar-handle:hover { color: var(--fg); }
+
+    /* MAIN CONTENT */
+    .main {
+      padding: 40px 64px 120px;
+    }
+
+    /* HERO */
+    .hero {
+      padding: 120px 0 160px;
+    }
+
+    .hero-tagline {
+      font-size: clamp(48px, 6vw, 80px);
+      font-weight: 500;
+      line-height: 1.05;
+      letter-spacing: -0.04em;
+      margin-bottom: 48px;
+      max-width: 700px;
+    }
+
+    .hero-tagline .dim {
+      color: var(--fg-tertiary);
+    }
+
+    .hero-description {
+      font-size: 17px;
+      line-height: 1.8;
+      color: var(--fg-secondary);
+      max-width: 520px;
+      margin-bottom: 32px;
+    }
+
+    .link-arrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 14px;
+      font-weight: 500;
+      text-decoration: none;
+      color: var(--fg);
+      border-bottom: 1px solid var(--rule);
+      padding-bottom: 2px;
+      transition: border-color 0.15s;
+    }
+
+    .link-arrow:hover {
+      border-color: var(--fg);
+    }
+
+    /* SECTIONS */
+    .section {
+      padding: 80px 0;
+    }
+
+    .section-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--fg-tertiary);
+      margin-bottom: 48px;
+    }
+
+    .section-rule {
+      border: none;
+      border-top: 1px solid var(--rule);
+      margin-bottom: 0;
+    }
+
+    /* PROTOCOL SECTION */
+    .protocol-statement {
+      font-size: clamp(24px, 3vw, 36px);
+      font-weight: 500;
+      line-height: 1.4;
+      letter-spacing: -0.02em;
+      max-width: 640px;
+      margin-bottom: 64px;
+    }
+
+    .protocol-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0;
+    }
+
+    .protocol-item {
+      padding: 32px 32px 32px 0;
+      border-top: 1px solid var(--rule);
+    }
+
+    .protocol-item:not(:nth-child(3n+1)) {
+      padding-left: 32px;
+      border-left: 1px solid var(--rule);
+    }
+
+    .protocol-item-number {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      color: var(--fg-tertiary);
+      margin-bottom: 16px;
+    }
+
+    .protocol-item h3 {
+      font-size: 17px;
+      font-weight: 500;
+      margin-bottom: 8px;
+      letter-spacing: -0.01em;
+    }
+
+    .protocol-item p {
+      font-size: 14px;
+      line-height: 1.7;
+      color: var(--fg-secondary);
+    }
+
+    /* SHIFT PROSE */
+    .shift-prose {
+      max-width: 600px;
+    }
+
+    .shift-prose p {
+      font-size: 16px;
+      line-height: 1.85;
+      color: var(--fg-secondary);
+      margin-bottom: 20px;
+    }
+
+    .shift-prose p:last-child {
+      margin-bottom: 0;
+    }
+
+    /* CAPABILITIES */
+    .capability-row {
+      display: grid;
+      grid-template-columns: 180px 1fr;
+      gap: 64px;
+      padding: 40px 0;
+      border-top: 1px solid var(--rule);
+      align-items: baseline;
+    }
+
+    .capability-row:last-of-type {
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .capability-name {
+      font-size: 14px;
+      font-weight: 500;
+      letter-spacing: -0.01em;
+    }
+
+    .capability-body {
+      display: grid;
+      grid-template-columns: 1fr 200px;
+      gap: 48px;
+    }
+
+    .capability-desc {
+      font-size: 15px;
+      line-height: 1.8;
+      color: var(--fg-secondary);
+    }
+
+    .capability-details {
+      font-size: 13px;
+      line-height: 2;
+      color: var(--fg-tertiary);
+    }
+
+    .capability-details span {
+      display: block;
+    }
+
+    /* MOMENTUM */
+    .momentum-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0;
+      border-top: 1px solid var(--rule);
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .momentum-stat {
+      padding: 32px 24px 32px 0;
+    }
+
+    .momentum-stat:not(:first-child) {
+      padding-left: 24px;
+      border-left: 1px solid var(--rule);
+    }
+
+    .momentum-value {
+      font-size: 32px;
+      font-weight: 500;
+      letter-spacing: -0.03em;
+      margin-bottom: 4px;
+    }
+
+    .momentum-label {
+      font-size: 13px;
+      color: var(--fg-tertiary);
+      line-height: 1.5;
+    }
+
+    /* CONTACT */
+    .contact {
+      padding: 120px 0 80px;
+    }
+
+    .contact-statement {
+      font-size: clamp(24px, 3vw, 36px);
+      font-weight: 500;
+      line-height: 1.4;
+      letter-spacing: -0.02em;
+      max-width: 500px;
+      margin-bottom: 24px;
+    }
+
+    .contact-sub {
+      font-size: 15px;
+      color: var(--fg-secondary);
+      margin-bottom: 32px;
+      line-height: 1.7;
+      max-width: 400px;
+    }
+
+    .contact-email {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 14px;
+      color: var(--fg-secondary);
+      text-decoration: none;
+      border-bottom: 1px solid var(--rule);
+      padding-bottom: 2px;
+      transition: color 0.15s, border-color 0.15s;
+    }
+
+    .contact-email:hover {
+      color: var(--fg);
+      border-color: var(--fg);
+    }
+
+    /* FOOTER */
+    .footer {
+      padding: 32px 0;
+      border-top: 1px solid var(--rule);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 12px;
+      color: var(--fg-tertiary);
+    }
+
+    .footer a {
+      color: var(--fg-tertiary);
+      text-decoration: none;
+      transition: color 0.15s;
+    }
+
+    .footer a:hover { color: var(--fg); }
+
+    .footer-links {
+      display: flex;
+      gap: 20px;
+      list-style: none;
+    }
+
+    /* SCROLL FADE IN */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(16px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="page">
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+      <div class="sidebar-top">
+        <a href="/" class="logo">
+          <div class="logo-mark">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12 3C7 3 3 7 3 12s4 9 9 9 9-4 9-9-4-9-9-9zm0 16c-3.87 0-7-3.13-7-7s3.13-7 7-7 7 3.13 7 7-3.13 7-7 7z" fill="currentColor"/>
+              <circle cx="12" cy="12" r="3" fill="currentColor"/>
+            </svg>
+          </div>
+          <span class="logo-text">Bird Candy</span>
+        </a>
+
+        <ul class="sidebar-nav">
+          <li><a href="#the-shift" class="active">The Shift</a></li>
+          <li><a href="#capabilities">What We Do</a></li>
+          <li><a href="#why-studio">Why a Studio</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+
+        <div class="sidebar-divider"></div>
+
+        <ul class="sidebar-nav">
+          <li><a href="/writing">Writing</a></li>
+          <li><a href="/about">About</a></li>
+        </ul>
+      </div>
+
+      <div class="sidebar-bottom">
+        <a href="https://bsky.app/profile/birdcandy.com" class="sidebar-handle">@birdcandy.com</a>
+      </div>
+    </aside>
+
+    <!-- MAIN -->
+    <main class="main">
+
+      <!-- HERO -->
+      <section class="hero">
+        <h1 class="hero-tagline">
+          The interface<br>
+          <span class="dim">is changing.</span>
+        </h1>
+        <p class="hero-description">
+          Bird Candy is a strategy studio helping companies navigate the shift from proprietary platforms to open protocols. We work with AT Protocol — the standard behind Bluesky — to help organizations that are rethinking how they publish, distribute, and own their data.
+        </p>
+        <a href="#contact" class="link-arrow">Get in touch &rarr;</a>
+      </section>
+
+      <!-- THE SHIFT -->
+      <section class="section fade-in" id="the-shift">
+        <hr class="section-rule">
+        <div style="padding-top: 48px;">
+          <p class="section-label">The shift</p>
+          <p class="protocol-statement">
+            For two decades, the most valuable companies on the internet have been databases with interfaces. The app was how you reached the data. The data was the moat.
+          </p>
+
+          <div class="shift-prose">
+            <p>That model is breaking — from multiple directions at once.</p>
+            <p>AI agents are becoming the primary interface. When a user asks an agent to act on their behalf, the agent doesn't open your app — it needs structured, open data it can read and transact with. If your data isn't accessible, you're invisible.</p>
+            <p>Regulators are demanding portability. Users are expecting ownership. And open protocols are making it possible to publish data in formats that anyone — any app, any agent, any competitor — can build on.</p>
+            <p>The companies that adapt will define the standards their industries run on. The ones that don't will find themselves intermediated by someone who did.</p>
+          </div>
+
+          <div class="shift-atproto">
+            <p class="protocol-statement" style="margin-top: 64px;">
+              AT Protocol is the most credible infrastructure for this transition.
+            </p>
+            <div class="protocol-grid">
+              <div class="protocol-item">
+                <p class="protocol-item-number">01</p>
+                <h3>Identity</h3>
+                <p>Verifiable identity tied to your domain. Portable, cryptographic, owned by you — not rented from a platform.</p>
+              </div>
+              <div class="protocol-item">
+                <p class="protocol-item-number">02</p>
+                <h3>Content</h3>
+                <p>Data stored on infrastructure you control. Syndicates across every app in the network. Switch platforms, keep your audience.</p>
+              </div>
+              <div class="protocol-item">
+                <p class="protocol-item-number">03</p>
+                <h3>Interoperability</h3>
+                <p>Open schemas — Lexicons — that make your data machine-readable by default. Agents, apps, and competitors can all build on it.</p>
+              </div>
+            </div>
+
+            <div class="momentum-grid" style="margin-top: 48px;">
+              <div class="momentum-stat">
+                <div class="momentum-value">43M+</div>
+                <div class="momentum-label">Bluesky users</div>
+              </div>
+              <div class="momentum-stat">
+                <div class="momentum-value">$100M</div>
+                <div class="momentum-label">Series B, 2026</div>
+              </div>
+              <div class="momentum-stat">
+                <div class="momentum-value">IETF</div>
+                <div class="momentum-label">Standardization underway</div>
+              </div>
+              <div class="momentum-stat">
+                <div class="momentum-value">1,000+</div>
+                <div class="momentum-label">Weekly active apps</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- WHAT WE DO -->
+      <section class="section fade-in" id="capabilities">
+        <hr class="section-rule">
+        <div style="padding-top: 48px;">
+          <p class="section-label">What we do</p>
+
+          <div class="capability-row">
+            <div class="capability-name">Strategy</div>
+            <div class="capability-body">
+              <p class="capability-desc">Where does AT Protocol fit in your business? We map the opportunity, identify what to build first, and produce a roadmap your team can execute against.</p>
+              <div class="capability-details">
+                <span>Readiness assessment</span>
+                <span>Opportunity mapping</span>
+                <span>Executive roadmap</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="capability-row">
+            <div class="capability-name">Architecture</div>
+            <div class="capability-body">
+              <p class="capability-desc">Identity systems, Lexicon design, data models, feed algorithms. The technical foundations that make your protocol presence buildable, maintainable, and interoperable.</p>
+              <div class="capability-details">
+                <span>System design</span>
+                <span>Identity strategy</span>
+                <span>Lexicon design</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="capability-row">
+            <div class="capability-name">Prototyping</div>
+            <div class="capability-body">
+              <p class="capability-desc">Small, fast implementations built outside your production environment. Test the thesis before you commit the roadmap.</p>
+              <div class="capability-details">
+                <span>Custom feeds</span>
+                <span>Integration prototypes</span>
+                <span>Technical validation</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- WHY A STUDIO -->
+      <section class="section fade-in" id="why-studio">
+        <hr class="section-rule">
+        <div style="padding-top: 48px;">
+          <p class="section-label">Why a studio</p>
+          <div class="shift-prose">
+            <p>This transition requires a different kind of thinking than your team is staffed for. Not because they aren't capable — because the mental model is different. Centralized architecture and decentralized protocols are fundamentally different design problems.</p>
+            <p>We provide protocol fluency. We've internalized how identity, data, and distribution work in a federated system so your team doesn't have to start from zero.</p>
+            <p>And when the work involves defining open standards, neutrality matters. A schema designed by one platform will be resisted by its competitors. We sit outside that dynamic — which is exactly where this work needs to happen.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- CONTACT -->
+      <section class="contact fade-in" id="contact">
+        <hr class="section-rule">
+        <div style="padding-top: 48px;">
+          <p class="contact-statement">
+            Let's talk about what you're thinking.
+          </p>
+          <p class="contact-sub">
+            No pitch decks. A conversation about your goals and whether AT Protocol is the right path.
+          </p>
+          <a href="mailto:hello@birdcandy.com" class="contact-email">hello@birdcandy.com</a>
+        </div>
+      </section>
+
+      <!-- FOOTER -->
+      <footer class="footer">
+        <span>Bird Candy &copy; 2026</span>
+        <ul class="footer-links">
+          <li><a href="/writing">Writing</a></li>
+          <li><a href="/about">About</a></li>
+          <li><a href="https://bsky.app/profile/birdcandy.com">Bluesky</a></li>
+        </ul>
+      </footer>
+
+    </main>
+  </div>
+
+  <script>
+    // Scroll fade-in
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+  </script>
+
+</body>
+</html>

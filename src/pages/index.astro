@@ -1,0 +1,244 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout>
+
+  <!-- HERO -->
+  <section class="pt-20 pb-32 lg:pt-30 lg:pb-40">
+    <h1 class="text-5xl lg:text-7xl xl:text-8xl font-medium leading-[1.05] tracking-tighter max-w-[700px] mb-12">
+      The interface<br/>
+      <span class="text-fg-tertiary">is changing.</span>
+    </h1>
+    <p class="text-[17px] leading-relaxed text-fg-secondary max-w-[520px] mb-8">
+      Bird Candy is a strategy studio helping companies navigate the shift from
+      proprietary platforms to open protocols. We work with AT Protocol — the
+      standard behind Bluesky — to help organizations that are rethinking how
+      they publish, distribute, and own their data.
+    </p>
+    <a href="#contact" class="inline-flex items-center gap-1.5 text-sm font-medium text-fg no-underline border-b border-rule pb-0.5 transition-[border-color] duration-150 hover:border-fg">
+      Get in touch &rarr;
+    </a>
+  </section>
+
+  <!-- THE SHIFT -->
+  <section class="py-20 fade-in" id="the-shift">
+    <hr class="border-t border-rule mb-12" />
+    <p class="font-mono text-[11px] uppercase tracking-widest text-fg-tertiary mb-12">The shift</p>
+
+    <p class="text-2xl lg:text-4xl font-medium leading-snug tracking-tight max-w-[640px] mb-16">
+      For two decades, the most valuable companies on the internet have been
+      databases with interfaces. The app was how you reached the data. The data
+      was the moat.
+    </p>
+
+    <div class="max-w-[600px] space-y-5">
+      <p class="text-base leading-relaxed text-fg-secondary">
+        That model is breaking — from multiple directions at once.
+      </p>
+      <p class="text-base leading-relaxed text-fg-secondary">
+        AI agents are becoming the primary interface. When a user asks an agent
+        to act on their behalf, the agent doesn't open your app — it needs
+        structured, open data it can read and transact with. If your data isn't
+        accessible, you're invisible.
+      </p>
+      <p class="text-base leading-relaxed text-fg-secondary">
+        Regulators are demanding portability. Users are expecting ownership. And
+        open protocols are making it possible to publish data in formats that
+        anyone — any app, any agent, any competitor — can build on.
+      </p>
+      <p class="text-base leading-relaxed text-fg-secondary">
+        The companies that adapt will define the standards their industries run
+        on. The ones that don't will find themselves intermediated by someone who
+        did.
+      </p>
+    </div>
+
+    <!-- AT Protocol -->
+    <p class="text-2xl lg:text-4xl font-medium leading-snug tracking-tight max-w-[640px] mt-16 mb-12">
+      AT Protocol is the most credible infrastructure for this transition.
+    </p>
+
+    <div class="grid grid-cols-1 md:grid-cols-3">
+      <div class="border-t border-rule pt-8 pb-8 pr-8">
+        <p class="font-mono text-[11px] text-fg-tertiary mb-4">01</p>
+        <h3 class="text-[17px] font-medium tracking-tight mb-2">Identity</h3>
+        <p class="text-sm leading-relaxed text-fg-secondary">
+          Verifiable identity tied to your domain. Portable, cryptographic,
+          owned by you — not rented from a platform.
+        </p>
+      </div>
+      <div class="border-t md:border-l border-rule pt-8 pb-8 pr-8 md:pl-8">
+        <p class="font-mono text-[11px] text-fg-tertiary mb-4">02</p>
+        <h3 class="text-[17px] font-medium tracking-tight mb-2">Content</h3>
+        <p class="text-sm leading-relaxed text-fg-secondary">
+          Data stored on infrastructure you control. Syndicates across every app
+          in the network. Switch platforms, keep your audience.
+        </p>
+      </div>
+      <div class="border-t md:border-l border-rule pt-8 pb-8 md:pl-8">
+        <p class="font-mono text-[11px] text-fg-tertiary mb-4">03</p>
+        <h3 class="text-[17px] font-medium tracking-tight mb-2">Interoperability</h3>
+        <p class="text-sm leading-relaxed text-fg-secondary">
+          Open schemas — Lexicons — that make your data machine-readable by
+          default. Agents, apps, and competitors can all build on it.
+        </p>
+      </div>
+    </div>
+
+    <!-- Momentum stats -->
+    <div class="grid grid-cols-2 md:grid-cols-4 border-t border-b border-rule mt-12">
+      <div class="py-8 pr-6">
+        <div class="text-3xl font-medium tracking-tight mb-1">43M+</div>
+        <div class="text-[13px] text-fg-tertiary leading-snug">Bluesky users</div>
+      </div>
+      <div class="border-l border-rule py-8 px-6">
+        <div class="text-3xl font-medium tracking-tight mb-1">$100M</div>
+        <div class="text-[13px] text-fg-tertiary leading-snug">Series B, 2026</div>
+      </div>
+      <div class="border-l border-rule py-8 px-6">
+        <div class="text-3xl font-medium tracking-tight mb-1">IETF</div>
+        <div class="text-[13px] text-fg-tertiary leading-snug">Standardization underway</div>
+      </div>
+      <div class="border-l border-rule py-8 pl-6">
+        <div class="text-3xl font-medium tracking-tight mb-1">1,000+</div>
+        <div class="text-[13px] text-fg-tertiary leading-snug">Weekly active apps</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHAT WE DO -->
+  <section class="py-20 fade-in" id="capabilities">
+    <hr class="border-t border-rule mb-12" />
+    <p class="font-mono text-[11px] uppercase tracking-widest text-fg-tertiary mb-12">What we do</p>
+
+    <!-- Strategy -->
+    <div class="grid grid-cols-1 md:grid-cols-[180px_1fr] gap-8 md:gap-16 py-10 border-t border-rule items-baseline">
+      <div class="text-sm font-medium tracking-tight">Strategy</div>
+      <div class="grid grid-cols-1 lg:grid-cols-[1fr_200px] gap-8 lg:gap-12">
+        <p class="text-[15px] leading-relaxed text-fg-secondary">
+          Where does AT Protocol fit in your business? We map the opportunity,
+          identify what to build first, and produce a roadmap your team can
+          execute against.
+        </p>
+        <div class="text-[13px] leading-loose text-fg-tertiary">
+          <span class="block">Readiness assessment</span>
+          <span class="block">Opportunity mapping</span>
+          <span class="block">Executive roadmap</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Architecture -->
+    <div class="grid grid-cols-1 md:grid-cols-[180px_1fr] gap-8 md:gap-16 py-10 border-t border-rule items-baseline">
+      <div class="text-sm font-medium tracking-tight">Architecture</div>
+      <div class="grid grid-cols-1 lg:grid-cols-[1fr_200px] gap-8 lg:gap-12">
+        <p class="text-[15px] leading-relaxed text-fg-secondary">
+          Identity systems, Lexicon design, data models, feed algorithms. The
+          technical foundations that make your protocol presence buildable,
+          maintainable, and interoperable.
+        </p>
+        <div class="text-[13px] leading-loose text-fg-tertiary">
+          <span class="block">System design</span>
+          <span class="block">Identity strategy</span>
+          <span class="block">Lexicon design</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Prototyping -->
+    <div class="grid grid-cols-1 md:grid-cols-[180px_1fr] gap-8 md:gap-16 py-10 border-t border-b border-rule items-baseline">
+      <div class="text-sm font-medium tracking-tight">Prototyping</div>
+      <div class="grid grid-cols-1 lg:grid-cols-[1fr_200px] gap-8 lg:gap-12">
+        <p class="text-[15px] leading-relaxed text-fg-secondary">
+          Small, fast implementations built outside your production environment.
+          Test the thesis before you commit the roadmap.
+        </p>
+        <div class="text-[13px] leading-loose text-fg-tertiary">
+          <span class="block">Custom feeds</span>
+          <span class="block">Integration prototypes</span>
+          <span class="block">Technical validation</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY A STUDIO -->
+  <section class="py-20 fade-in" id="why-studio">
+    <hr class="border-t border-rule mb-12" />
+    <p class="font-mono text-[11px] uppercase tracking-widest text-fg-tertiary mb-12">Why a studio</p>
+
+    <div class="max-w-[600px] space-y-5">
+      <p class="text-base leading-relaxed text-fg-secondary">
+        This transition requires a different kind of thinking than your team is
+        staffed for. Not because they aren't capable — because the mental model
+        is different. Centralized architecture and decentralized protocols are
+        fundamentally different design problems.
+      </p>
+      <p class="text-base leading-relaxed text-fg-secondary">
+        We provide protocol fluency. We've internalized how identity, data, and
+        distribution work in a federated system so your team doesn't have to
+        start from zero.
+      </p>
+      <p class="text-base leading-relaxed text-fg-secondary">
+        And when the work involves defining open standards, neutrality matters. A
+        schema designed by one platform will be resisted by its competitors. We
+        sit outside that dynamic — which is exactly where this work needs to
+        happen.
+      </p>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="pt-30 pb-20 fade-in" id="contact">
+    <hr class="border-t border-rule mb-12" />
+    <p class="text-2xl lg:text-4xl font-medium leading-snug tracking-tight max-w-[500px] mb-6">
+      Let's talk about what you're thinking.
+    </p>
+    <p class="text-[15px] text-fg-secondary mb-8 leading-relaxed max-w-[400px]">
+      No pitch decks. A conversation about your goals and whether AT Protocol is
+      the right path.
+    </p>
+    <a
+      href="mailto:hello@birdcandy.com"
+      class="font-mono text-sm text-fg-secondary no-underline border-b border-rule pb-0.5 transition-colors duration-150 hover:text-fg hover:border-fg"
+    >
+      hello@birdcandy.com
+    </a>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 border-t border-rule py-8 text-xs text-fg-tertiary">
+    <span>Bird Candy &copy; 2026</span>
+    <ul class="flex gap-5 list-none p-0">
+      <li><a href="/writing" class="text-fg-tertiary no-underline transition-colors duration-150 hover:text-fg">Writing</a></li>
+      <li><a href="/about" class="text-fg-tertiary no-underline transition-colors duration-150 hover:text-fg">About</a></li>
+      <li><a href="https://bsky.app/profile/birdcandy.com" class="text-fg-tertiary no-underline transition-colors duration-150 hover:text-fg" target="_blank" rel="noopener">Bluesky</a></li>
+    </ul>
+  </footer>
+
+</BaseLayout>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
+
+<style>
+  .fade-in {
+    opacity: 0;
+    transform: translateY(16px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+  .fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+</style>
