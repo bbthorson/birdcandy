@@ -1,0 +1,24 @@
+---
+const links = [
+  { href: '/work/', label: 'Work', external: false },
+  { href: '/thesis/', label: 'Thesis', external: false },
+  { href: 'https://bsky.app/profile/birdcandy.com', label: 'Bluesky', external: true },
+];
+---
+
+<footer class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 border-t border-rule py-8 text-xs text-fg-tertiary">
+  <span>Bird Candy &copy; 2026</span>
+  <ul class="flex gap-5 list-none p-0">
+    {links.map((item) => (
+      <li>
+        <a
+          href={item.href}
+          class="text-fg-tertiary no-underline transition-colors duration-150 hover:text-accent"
+          {...(item.external ? { target: '_blank', rel: 'noopener' } : {})}
+        >
+          {item.label}
+        </a>
+      </li>
+    ))}
+  </ul>
+</footer>

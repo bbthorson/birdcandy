@@ -1,0 +1,114 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Footer from '../components/layout/Footer.astro';
+
+// The first entry is real (Antiphony). Entries 02+ are PLACEHOLDER
+// archetypes to show the shape of the page — swap them for real engagements.
+const projects = [
+  {
+    n: '01',
+    title: 'Antiphony',
+    client: 'Open audio infrastructure',
+    type: 'Protocol / Infrastructure',
+    did: 'Designed the dev.antiphony.* Lexicons — audio posts, replies, identity, and transcription — and built the open-core backend that serves them behind a single HTTP API, with self-hosting for teams that want to run their own.',
+    why: 'Audio social has been trapped in proprietary silos. Putting posts, replies, and transcription on open Lexicons makes audio content portable across the AT Protocol network, so developers can build new apps on shared infrastructure instead of rebuilding it from scratch.',
+    stack: ['Lexicon design', 'AT Protocol', 'HTTP API', 'Transcription'],
+    link: { href: 'https://docs.antiphony.dev/', label: 'Read the docs' },
+  },
+  {
+    n: '02',
+    title: 'Lexicon & identity design',
+    client: 'Domain platform',
+    type: 'Architecture / Standards',
+    did: 'Authored a set of Lexicons for the client’s core record types and wired domain-based handle verification, so their identities are portable and cryptographically owned rather than rented.',
+    why: 'Defining the schema early makes the org’s data machine-readable by default and interoperable with any future app — theirs, a partner’s, or an agent’s.',
+    stack: ['Lexicon design', 'DID / handles', 'PDS'],
+  },
+  {
+    n: '03',
+    title: 'Protocol prototype',
+    client: 'Early-stage team',
+    type: 'Prototyping / Validation',
+    did: 'Built a two-week prototype outside production that put the client’s core interaction on AT Protocol, to test whether the thesis held before committing a roadmap.',
+    why: 'Cheap proof beats an expensive plan. The prototype answered the open technical questions and de-risked the decision to build.',
+    stack: ['TypeScript', '@atproto/api', 'AppView'],
+  },
+];
+---
+
+<BaseLayout
+  title="Work — Bird Candy"
+  description="Selected AT Protocol work from Bird Candy: what we built, and why it mattered."
+>
+  <!-- HERO -->
+  <section class="pt-20 pb-16 lg:pt-30 lg:pb-20">
+    <p class="font-mono text-[11px] uppercase tracking-widest text-fg-tertiary mb-8">Work</p>
+    <h1 class="text-4xl lg:text-6xl font-medium leading-[1.05] tracking-tighter max-w-[640px] mb-10">
+      What we built,<br />
+      <span class="text-fg-tertiary">and why.</span>
+    </h1>
+    <p class="text-[17px] leading-relaxed text-fg-secondary max-w-[520px]">
+      We work in the open. Most of what we do starts as a small, sharp
+      implementation — a feed, a Lexicon, a prototype — that tests a thesis
+      before anyone commits a roadmap. A few representative engagements below.
+    </p>
+  </section>
+
+  <!-- PROJECTS -->
+  <section class="pb-20">
+    {projects.map((p) => (
+      <article class="fade-in grid grid-cols-1 md:grid-cols-[180px_1fr] gap-8 md:gap-16 py-12 border-t border-rule">
+        <div>
+          <p class="font-mono text-[11px] text-fg-tertiary mb-3">{p.n}</p>
+          <h2 class="text-xl font-medium tracking-tight mb-1">{p.title}</h2>
+          <p class="font-mono text-[11px] uppercase tracking-widest text-fg-tertiary">{p.type}</p>
+        </div>
+
+        <div class="max-w-[560px]">
+          <p class="text-[13px] text-fg-tertiary mb-6">{p.client}</p>
+
+          <p class="font-mono text-[11px] uppercase tracking-widest text-fg-tertiary mb-2">What we did</p>
+          <p class="text-[15px] leading-relaxed text-fg-secondary mb-6">{p.did}</p>
+
+          <p class="font-mono text-[11px] uppercase tracking-widest text-fg-tertiary mb-2">Why</p>
+          <p class="text-[15px] leading-relaxed text-fg-secondary mb-6">{p.why}</p>
+
+          <div class="flex flex-wrap gap-2">
+            {p.stack.map((tag) => (
+              <span class="font-mono text-[11px] text-fg-tertiary border border-rule rounded-full px-2.5 py-1">
+                {tag}
+              </span>
+            ))}
+          </div>
+
+          {p.link && (
+            <a
+              href={p.link.href}
+              target="_blank"
+              rel="noopener"
+              class="mt-6 inline-flex items-center gap-1.5 font-mono text-[13px] text-fg-secondary no-underline border-b border-rule pb-0.5 transition-colors duration-150 hover:text-fg hover:border-fg"
+            >
+              {p.link.label} &rarr;
+            </a>
+          )}
+        </div>
+      </article>
+    ))}
+  </section>
+
+  <!-- CTA -->
+  <section class="fade-in pt-6 pb-20">
+    <hr class="border-t border-rule mb-12" />
+    <p class="text-2xl lg:text-3xl font-medium leading-snug tracking-tight max-w-[500px] mb-6">
+      Thinking about your own protocol move?
+    </p>
+    <a
+      href="/#contact"
+      class="inline-flex items-center gap-1.5 text-sm font-medium text-fg no-underline border-b border-rule pb-0.5 transition-[border-color] duration-150 hover:border-fg"
+    >
+      Get in touch &rarr;
+    </a>
+  </section>
+
+  <Footer />
+</BaseLayout>
