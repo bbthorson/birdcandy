@@ -2,18 +2,18 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Footer from '../components/layout/Footer.astro';
 
-// PLACEHOLDER CONTENT — replace each project with real work.
-// Each entry is a representative AT Protocol archetype to show the shape
-// of the page; swap `client`, copy, and stack for the real engagements.
+// The first entry is real (Antiphony). Entries 02+ are PLACEHOLDER
+// archetypes to show the shape of the page — swap them for real engagements.
 const projects = [
   {
     n: '01',
-    title: 'Custom feed generator',
-    client: 'Media organization',
-    type: 'Feed / Distribution',
-    did: 'Designed and shipped a custom feed generator that indexes the network firehose and serves a ranked, topical feed to any AT Protocol app — running as a lightweight service outside the client’s production stack.',
-    why: 'Their audience was fragmenting across apps. A feed that lives on the protocol, not inside one app, reaches readers wherever they are and can’t be quietly deprecated by a platform.',
-    stack: ['Feed generator', 'Jetstream / firehose', 'Ranking'],
+    title: 'Antiphony',
+    client: 'Open audio infrastructure',
+    type: 'Protocol / Infrastructure',
+    did: 'Designed the dev.antiphony.* Lexicons — audio posts, replies, identity, and transcription — and built the open-core backend that serves them behind a single HTTP API, with self-hosting for teams that want to run their own.',
+    why: 'Audio social has been trapped in proprietary silos. Putting posts, replies, and transcription on open Lexicons makes audio content portable across the AT Protocol network, so developers can build new apps on shared infrastructure instead of rebuilding it from scratch.',
+    stack: ['Lexicon design', 'AT Protocol', 'HTTP API', 'Transcription'],
+    link: { href: 'https://docs.antiphony.dev/', label: 'Read the docs' },
   },
   {
     n: '02',
@@ -80,6 +80,17 @@ const projects = [
               </span>
             ))}
           </div>
+
+          {p.link && (
+            <a
+              href={p.link.href}
+              target="_blank"
+              rel="noopener"
+              class="mt-6 inline-flex items-center gap-1.5 font-mono text-[13px] text-fg-secondary no-underline border-b border-rule pb-0.5 transition-colors duration-150 hover:text-fg hover:border-fg"
+            >
+              {p.link.label} &rarr;
+            </a>
+          )}
         </div>
       </article>
     ))}
