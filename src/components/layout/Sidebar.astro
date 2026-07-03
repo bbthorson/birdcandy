@@ -11,9 +11,11 @@ const sections = [
   <div>
     <a href="/" class="mb-12 flex items-center gap-2.5 no-underline">
       <div class="flex h-7 w-7 items-center justify-center rounded-md bg-fg">
-        <svg class="h-4 w-4 text-bg" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-          <path d="M12 3C7 3 3 7 3 12s4 9 9 9 9-4 9-9-4-9-9-9zm0 16c-3.87 0-7-3.13-7-7s3.13-7 7-7 7 3.13 7 7-3.13 7-7 7z"/>
-          <circle cx="12" cy="12" r="3"/>
+        <svg class="h-5 w-5 text-bg" viewBox="0 0 128 128" xmlns="http://www.w3.org/2000/svg">
+          <path fill="currentColor" d="M64 20 24 56 104 56Z"/>
+          <rect fill="currentColor" x="38" y="53" width="52" height="53" rx="4"/>
+          <circle cx="64" cy="73" r="12" fill="#ff3d8b"/>
+          <rect x="55" y="88" width="18" height="5" rx="2.5" fill="#2b5cff"/>
         </svg>
       </div>
       <span class="text-[15px] font-medium tracking-tight">Bird Candy</span>
@@ -25,7 +27,7 @@ const sections = [
           <li>
             <a
               href={item.href}
-              class="sidebar-link block py-1 text-sm text-fg-tertiary no-underline transition-colors duration-150 hover:text-fg"
+              class="sidebar-link block py-1 text-sm text-fg-tertiary no-underline transition-colors duration-150 hover:text-accent"
             >
               {item.label}
             </a>
@@ -38,7 +40,7 @@ const sections = [
   <div>
     <a
       href="https://bsky.app/profile/birdcandy.com"
-      class="font-mono text-xs text-fg-tertiary no-underline transition-colors duration-150 hover:text-fg"
+      class="font-mono text-xs text-fg-tertiary no-underline transition-colors duration-150 hover:text-accent"
       target="_blank"
       rel="noopener"
     >
