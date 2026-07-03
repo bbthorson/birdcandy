@@ -5,13 +5,11 @@ import Sidebar from '../components/layout/Sidebar.astro';
 interface Props {
   title?: string;
   description?: string;
-  currentPath?: string;
 }
 
 const {
   title = 'Bird Candy — Strategy for the open protocol transition',
   description = 'Bird Candy is a strategy studio helping companies navigate the shift from proprietary platforms to open protocols.',
-  currentPath = '/',
 } = Astro.props;
 ---
 
@@ -29,7 +27,7 @@ const {
   </head>
   <body>
     <div class="lg:grid lg:grid-cols-[240px_1fr] min-h-screen max-w-[1400px] mx-auto">
-      <Sidebar currentPath={currentPath} />
+      <Sidebar />
       <main class="px-6 py-10 pb-30 lg:px-16 lg:py-10">
         <slot />
       </main>
