@@ -195,16 +195,32 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     <p class="text-2xl lg:text-4xl font-medium leading-snug tracking-tight max-w-[500px] mb-6">
       Let's talk about what you're thinking.
     </p>
-    <p class="text-[15px] text-fg-secondary mb-8 leading-relaxed max-w-[400px]">
-      No pitch decks. A conversation about your goals and whether AT Protocol is
-      the right path.
+    <p class="text-[15px] text-fg-secondary mb-10 leading-relaxed max-w-[440px]">
+      No contact form, no email funnel. We take conversations the way the open
+      network is meant to work — a direct, end-to-end encrypted message over AT
+      Protocol.
     </p>
-    <a
-      href="mailto:hello@birdcandy.com"
-      class="font-mono text-sm text-fg-secondary no-underline border-b border-rule pb-0.5 transition-colors duration-150 hover:text-fg hover:border-fg"
-    >
-      hello@birdcandy.com
-    </a>
+
+    <div class="flex flex-col sm:flex-row gap-4">
+      <a
+        href="https://bsky.app/profile/birdcandy.com"
+        target="_blank"
+        rel="noopener"
+        class="group inline-flex items-center justify-between gap-6 border border-rule px-5 py-4 no-underline transition-colors duration-150 hover:border-fg"
+      >
+        <span>
+          <span class="block text-sm font-medium tracking-tight">Message us on Bluesky</span>
+          <span class="block font-mono text-[13px] text-fg-tertiary">@birdcandy.com</span>
+        </span>
+        <span class="text-fg-tertiary transition-colors duration-150 group-hover:text-fg">&rarr;</span>
+      </a>
+    </div>
+
+    <p class="mt-6 text-[13px] leading-relaxed text-fg-tertiary max-w-[440px]">
+      DMs are end-to-end encrypted via
+      <a href="https://www.germnetwork.com/" target="_blank" rel="noopener" class="border-b border-rule pb-px transition-colors duration-150 hover:text-fg hover:border-fg">Germ</a>
+      — no separate account needed, just your Bluesky handle.
+    </p>
   </section>
 
   <!-- FOOTER -->
