@@ -12,10 +12,12 @@ const sections = [
 const pages = [
   { href: '/work/', label: 'Work' },
   { href: '/thesis/', label: 'Thesis' },
+  { href: '/writing/', label: 'Writing' },
 ];
 
+// Prefix match so a post at /writing/<slug>/ still lights up "Writing".
 const isActive = (href: string) =>
-  currentPath === href || currentPath === `${href}/`;
+  currentPath === href || currentPath === href.replace(/\/$/, '') || currentPath.startsWith(href);
 ---
 
 <aside class="sidebar hidden lg:flex sticky top-0 h-screen flex-col justify-between border-r border-rule px-8 py-10">

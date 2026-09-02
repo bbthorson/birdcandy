@@ -1,0 +1,90 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Footer from '../../components/layout/Footer.astro';
+
+// Drafts are listed (clearly chipped, noindex'd, and out of the sitemap) so the
+// deployed preview is reviewable. Flip this to hide them from the public index
+// and cross-links; individual post URLs keep working either way.
+const SHOW_DRAFTS = true;
+
+const posts = (await getCollection('writing'))
+  .filter((p) => SHOW_DRAFTS || !p.data.draft)
+  .sort((a, b) => a.data.order - b.data.order);
+
+const fmt = (d: Date) =>
+  d.toLocaleDateString('en-US', { year: 'numeric', month: 'long' });
+---
+
+<BaseLayout
+  title="Writing — Bird Candy"
+  description="Three views of the same shift: what the move to open protocols looks like from where incumbents, challengers, and upstarts are standing."
+>
+  <!-- HERO -->
+  <section class="pt-20 pb-16 lg:pt-30 lg:pb-20">
+    <p class="font-mono text-[11px] uppercase tracking-widest text-fg-tertiary mb-8">Writing</p>
+    <h1 class="text-4xl lg:text-6xl font-medium leading-[1.05] tracking-tighter max-w-[680px] mb-10">
+      One shift,<br />
+      <span class="text-fg-tertiary">three vantage points.</span>
+    </h1>
+    <p class="text-[17px] leading-relaxed text-fg-secondary max-w-[540px]">
+      The move to open protocols is the same move for everyone, and a completely
+      different decision depending on what you already have. These pieces work
+      through it from each position — and walk the four layers of the Atmosphere
+      from that vantage.
+    </p>
+  </section>
+
+  <!-- POSTS -->
+  <section class="pb-20">
+    {posts.map((p) => (
+      <article class="fade-in grid grid-cols-1 md:grid-cols-[180px_1fr] gap-4 md:gap-16 py-12 border-t border-rule">
+        <div>
+          <p class="font-mono text-[11px] uppercase tracking-widest text-accent-blue mb-3">
+            For {p.data.audience}
+          </p>
+          <p class="font-mono text-[11px] text-fg-tertiary">{fmt(p.data.date)}</p>
+        </div>
+
+        <div class="max-w-[560px]">
+          <h2 class="text-xl lg:text-2xl font-medium tracking-tight leading-snug mb-3">
+            <a href={`/writing/${p.id}/`} class="no-underline transition-colors duration-150 hover:text-accent">
+              {p.data.title}
+            </a>
+          </h2>
+          <p class="text-[15px] leading-relaxed text-fg-secondary mb-6">{p.data.dek}</p>
+
+          <div class="flex items-center gap-4">
+            <a
+              href={`/writing/${p.id}/`}
+              class="inline-flex items-center gap-1.5 text-sm font-medium text-fg no-underline border-b border-rule pb-0.5 transition-[border-color] duration-150 hover:border-fg"
+            >
+              Read &rarr;
+            </a>
+            {p.data.draft && (
+              <span class="font-mono text-[10px] uppercase tracking-widest text-accent border border-accent/40 rounded-full px-2 py-0.5">
+                Draft
+              </span>
+            )}
+          </div>
+        </div>
+      </article>
+    ))}
+  </section>
+
+  <!-- CTA -->
+  <section class="fade-in pt-6 pb-20">
+    <hr class="border-t border-rule mb-12" />
+    <p class="text-2xl lg:text-3xl font-medium leading-snug tracking-tight max-w-[520px] mb-6">
+      Disagree with any of it? That's the more useful conversation.
+    </p>
+    <a
+      href="/#contact"
+      class="inline-flex items-center gap-1.5 text-sm font-medium text-fg no-underline border-b border-rule pb-0.5 transition-[border-color] duration-150 hover:border-fg"
+    >
+      Get in touch &rarr;
+    </a>
+  </section>
+
+  <Footer />
+</BaseLayout>

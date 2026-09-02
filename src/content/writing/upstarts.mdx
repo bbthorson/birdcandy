@@ -1,0 +1,92 @@
+---
+title: "Don't build the stack. Join it."
+dek: "Cold start is the only problem you have, and the Atmosphere has already solved most of it. Bring one layer. Borrow the rest."
+audience: "Upstarts"
+date: 2026-09-02
+draft: true
+order: 3
+---
+
+You have no users, no data, and no distribution. Conventionally that's three
+problems. In the Atmosphere it's mostly one, and it's smaller than it looks.
+
+The default startup path is to rebuild the entire stack — accounts, storage,
+social graph, feed, moderation — before you get to the idea you actually had.
+That work isn't differentiated. It's a tax, it takes a year, and at the end of
+it you still have zero users.
+
+## What you don't have to build
+
+Identity exists. Storage exists. Aggregation exists. A network of people with
+portable accounts already exists, and they can use your app without creating
+anything.
+
+That last part is the one worth sitting with. Your cold start isn't cold. The
+users are already there, holding identities and data they can point at whatever
+you ship. You are not asking them to sign up. You are asking them to try
+something.
+
+That changes what your first version has to be. Not a platform. A feature that
+happens to be worth opening.
+
+## Pick your layer
+
+The discipline is choosing exactly one layer to be excellent at, and taking the
+other three off the shelf.
+
+Most upstarts should pick the app layer, because that's where the idea usually
+lives and where the feedback loop is tightest. Some should pick data — if your
+insight is genuinely a new record type, defining that Lexicon well is the
+company. Very few should pick relay, and if you think you should, the honest
+version of that argument is usually about cost, not product.
+
+If you can't say which layer you're competing on in one sentence, you're
+building four mediocre things.
+
+## The Lexicon decision
+
+You'll make one schema decision in week one that you'll live with for years.
+
+Use an existing Lexicon where one fits, even imperfectly — you inherit every app
+that already reads it, and that inheritance is worth more than the fit. Define
+your own only where nothing exists, and then define it as though someone else
+will implement it, because if the idea is any good, someone will.
+
+The upstart advantage is that this is cheap for you and expensive for everyone
+else. You have no legacy schema to reconcile. Spend that.
+
+## Layer by layer
+
+### Identity
+
+Don't build auth. Take DIDs, take domain handles, ship on day one.
+
+> **Story slot — identity.** *(TK — workshop.)*
+
+### Data storage
+
+Records go in the user's repository, not your database. Your infrastructure bill
+scales with what you compute, not with what people keep.
+
+> **Story slot — data.** *(TK — workshop.)*
+
+### Relay
+
+Consume the firehose, don't run one. You want the whole network's activity
+without the whole network's operating cost.
+
+> **Story slot — relay.** *(TK — workshop; the interesting version here is the
+> team that built a real product on a public feed before writing any backend.)*
+
+### App layer
+
+Everything you have goes here.
+
+> **Story slot — app.** *(TK — workshop.)*
+
+## First moves
+
+Ship something in a fortnight that a stranger on the network can use without
+signing up. Then look at what they did with it. That's a faster, truer signal
+than anything you'd have learned in the year you didn't spend building
+accounts.

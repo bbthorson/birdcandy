@@ -5,11 +5,14 @@ import Sidebar from '../components/layout/Sidebar.astro';
 interface Props {
   title?: string;
   description?: string;
+  /** Keep drafts out of search results while they are still shareable by URL. */
+  noindex?: boolean;
 }
 
 const {
   title = 'Bird Candy — Strategy for the open protocol transition',
   description = 'Bird Candy is a strategy studio helping companies navigate the shift from proprietary platforms to open protocols.',
+  noindex = false,
 } = Astro.props;
 ---
 
@@ -22,6 +25,7 @@ const {
     <meta name="viewport" content="width=device-width" />
     <meta name="description" content={description} />
     <meta name="generator" content={Astro.generator} />
+    {noindex && <meta name="robots" content="noindex, nofollow" />}
     <title>{title}</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
