@@ -9,6 +9,7 @@
   /* Large decorative text only — the greyed second half of a headline.
      3.2:1, which clears the 3:1 bar that applies at 24px+. */
   --color-fg-faint: #8a8a84;
+  /* PALETTE MIRROR: also hardcoded in the theme-color meta in BaseLayout. */
   --color-bg: #f5f5f3;
   --color-rule: #ddd;
 
@@ -40,6 +41,7 @@
     --color-fg-secondary: #a0a09a;
     --color-fg-tertiary: #82827c;
     --color-fg-faint: #73736d;
+    /* PALETTE MIRROR: also in the theme-color meta in BaseLayout. */
     --color-bg: #111110;
     --color-rule: #2e2e2b;
 
