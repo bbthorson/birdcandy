@@ -1,7 +1,8 @@
 # Bird Candy
 
-Marketing site for **Bird Candy** — a strategy studio helping companies navigate
-the shift from proprietary platforms to open protocols, anchored on the
+Marketing site for **Bird Candy** — a product strategy studio for the open
+protocol shift, helping product leaders decide what to build as AI agents and
+open networks rewire distribution, anchored on the
 [AT Protocol](https://atproto.com).
 
 **Live:** https://birdcandy.bbthorson.workers.dev
