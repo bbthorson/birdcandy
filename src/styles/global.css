@@ -3,16 +3,80 @@
 @theme {
   --color-fg: #111;
   --color-fg-secondary: #666;
-  --color-fg-tertiary: #999;
+  /* Small meta text (11-13px mono labels). Was #999, which sat at 2.6:1 —
+     below the 4.5:1 needed at these sizes. Now 4.7:1. */
+  --color-fg-tertiary: #6e6e68;
+  /* Large decorative text only — the greyed second half of a headline.
+     3.2:1, which clears the 3:1 bar that applies at 24px+. */
+  --color-fg-faint: #8a8a84;
+  /* PALETTE MIRROR: also hardcoded in the theme-color meta in BaseLayout. */
   --color-bg: #f5f5f3;
   --color-rule: #ddd;
 
   /* candy accents — pink is the treat, blue is the platform. Use sparingly. */
   --color-accent: #ff3d8b;
   --color-accent-blue: #2b5cff;
+  /* The brand pink is 3.1:1 — fine for borders and fills (3:1 UI bar), not
+     for text. This is the same pink deepened to 4.5:1 for small accent text
+     and link hovers. In dark mode the lifted brand pink already passes, so
+     the two converge. */
+  --color-accent-ink: #d81b60;
 
   --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   --font-mono: 'JetBrains Mono', ui-monospace, 'Cascadia Code', monospace;
+
+  /* ---- Type scale ------------------------------------------------------
+     The small end of the scale, named by role. Display sizes (headlines,
+     statements) stay on Tailwind's own scale because each one is a
+     responsive ramp — text-4xl lg:text-6xl xl:text-7xl — and a ramp can't
+     be expressed as a single token. */
+  --text-chip: 10px;   /* uppercase mono chip: DRAFT */
+  --text-label: 11px;  /* uppercase mono eyebrow: "THE SHIFT", "01 / ..." */
+  --text-meta: 13px;   /* tags, dates, footnotes, capability lists */
+  --text-ui: 15px;     /* nav, card body, contact copy */
+  --text-lead: 17px;   /* hero deck / lead paragraph */
+
+  --leading-display: 1.05; /* headline leading */
+
+  /* ---- Measures --------------------------------------------------------
+     Line length, named by what the column holds. */
+  --container-note: 440px;       /* narrow aside */
+  --container-cta: 500px;        /* short closing statement */
+  --container-lead: 540px;       /* hero deck */
+  /* NB: not --container-prose — max-w-prose is a Tailwind built-in (65ch)
+     and would shadow this token. */
+  --container-body: 600px;       /* body copy */
+  --container-statement: 640px;  /* large statement paragraph */
+  --container-headline: 700px;   /* h1 */
+  --container-grid: 760px;       /* two-column card grid */
+  --container-shell: 1400px;     /* page shell */
+}
+
+/* Dark theme. Every utility resolves through these vars, so redefining the
+   tokens is the whole implementation. Follows the OS — no manual toggle,
+   which is what favicon.svg already assumed. */
+:root {
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    color-scheme: dark;
+
+    --color-fg: #f2f2ef;
+    --color-fg-secondary: #a0a09a;
+    --color-fg-tertiary: #82827c;
+    --color-fg-faint: #73736d;
+    /* PALETTE MIRROR: also in the theme-color meta in BaseLayout. */
+    --color-bg: #111110;
+    --color-rule: #2e2e2b;
+
+    /* Both accents are lifted: #ff3d8b and especially #2b5cff are too dark
+       against a near-black ground to stay legible. */
+    --color-accent: #ff5c9e;
+    --color-accent-blue: #7d9bff;
+    --color-accent-ink: #ff5c9e;
+  }
 }
 
 @layer base {
@@ -33,13 +97,169 @@
   }
 }
 
-.fade-in {
+.js .fade-in {
   opacity: 0;
   transform: translateY(16px);
   transition: opacity 0.6s ease, transform 0.6s ease;
 }
 
-.fade-in.visible {
+.js .fade-in.visible {
   opacity: 1;
   transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .js .fade-in {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Keyboard focus. The default outline disappears against the cream ground,
+   so give it the accent and enough offset to read. */
+:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  z-index: 100;
+  background: var(--color-fg);
+  color: var(--color-bg);
+  padding: 0.75rem 1.25rem;
+  font-size: 0.875rem;
+  text-decoration: none;
+}
+
+.skip-link:focus {
+  left: 0;
+}
+
+/* ---------------------------------------------------------------
+   Long-form prose (MDX posts under /writing)
+   Tuned by hand rather than via @tailwindcss/typography so the
+   rhythm matches the hand-built pages.
+   --------------------------------------------------------------- */
+.prose {
+  max-width: var(--container-body);
+}
+
+.prose > * + * {
+  margin-top: 1.25rem;
+}
+
+.prose p {
+  font-size: 1rem;
+  line-height: 1.75;
+  color: var(--color-fg-secondary);
+}
+
+.prose h2 {
+  margin-top: 4rem;
+  padding-top: 2.5rem;
+  border-top: 1px solid var(--color-rule);
+  font-size: 1.5rem;
+  font-weight: 500;
+  line-height: 1.3;
+  letter-spacing: -0.02em;
+  color: var(--color-fg);
+}
+
+.prose h3 {
+  margin-top: 2.75rem;
+  font-family: var(--font-mono);
+  font-size: var(--text-label);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--color-accent-blue);
+}
+
+.prose h3 + p {
+  margin-top: 0.75rem;
+}
+
+.prose strong {
+  font-weight: 500;
+  color: var(--color-fg);
+}
+
+.prose a {
+  color: inherit;
+  text-decoration: none;
+  border-bottom: 1px solid var(--color-rule);
+  padding-bottom: 1px;
+  transition: color 150ms, border-color 150ms;
+}
+
+.prose a:hover {
+  color: var(--color-accent-ink);
+  border-bottom-color: var(--color-accent);
+}
+
+/* Unresolved story slots — deliberately loud so drafts read as drafts. */
+.prose blockquote {
+  border: 1px solid color-mix(in srgb, var(--color-accent) 35%, transparent);
+  background: color-mix(in srgb, var(--color-accent) 4%, transparent);
+  padding: 1.25rem 1.5rem;
+}
+
+.prose blockquote p {
+  font-size: 0.875rem;
+  line-height: 1.7;
+  color: var(--color-fg-secondary);
+}
+
+.prose blockquote > * + * {
+  margin-top: 0.75rem;
+}
+
+.prose blockquote strong {
+  font-family: var(--font-mono);
+  font-size: var(--text-label);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--color-accent-ink);
+}
+
+.prose blockquote em {
+  font-style: normal;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--color-fg-tertiary);
+}
+
+.prose ul,
+.prose ol {
+  padding-left: 1.1rem;
+  color: var(--color-fg-secondary);
+}
+
+.prose li {
+  font-size: 1rem;
+  line-height: 1.75;
+}
+
+.prose li + li {
+  margin-top: 0.5rem;
+}
+
+.prose hr {
+  border: 0;
+  border-top: 1px solid var(--color-rule);
+  margin-top: 3rem;
 }
