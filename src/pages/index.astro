@@ -7,19 +7,24 @@ import Footer from '../components/layout/Footer.astro';
 
   <!-- HERO -->
   <section class="pt-20 pb-32 lg:pt-30 lg:pb-40">
-    <h1 class="text-5xl lg:text-7xl xl:text-8xl font-medium leading-display tracking-tighter max-w-headline mb-12">
-      The interface<br/>
-      <span class="text-fg-faint">is changing.</span>
+    <h1 class="text-4xl lg:text-6xl xl:text-7xl font-medium leading-display tracking-tighter max-w-headline mb-12">
+      The platform moat is gone.<br/>
+      <span class="text-fg-faint">Distribution has to be portable.</span>
     </h1>
     <p class="text-lead leading-relaxed text-fg-secondary max-w-lead mb-8">
-      Bird Candy is a strategy studio helping companies navigate the shift from
-      proprietary platforms to open protocols. We work with AT Protocol — the
-      standard behind Bluesky — to help organizations that are rethinking how
-      they publish, distribute, and own their data.
+      Bird Candy is a product strategy studio for the open protocol shift. We
+      help product leaders decide what to build as AI agents and open networks
+      rewire distribution — then prove the answer on AT Protocol, off-stack,
+      before it touches your roadmap.
     </p>
-    <a href="#contact" class="inline-flex items-center gap-1.5 text-sm font-medium text-fg no-underline border-b border-rule pb-0.5 transition-[border-color] duration-150 hover:border-fg">
-      Get in touch &rarr;
-    </a>
+    <div class="flex flex-wrap items-center gap-8">
+      <a href="#contact" class="inline-flex items-center gap-1.5 text-sm font-medium text-fg no-underline border-b border-rule pb-0.5 transition-[border-color] duration-150 hover:border-fg">
+        Start a conversation &rarr;
+      </a>
+      <a href="/thesis/" class="inline-flex items-center gap-1.5 text-sm font-medium text-fg-secondary no-underline border-b border-rule pb-0.5 transition-[border-color] duration-150 hover:border-fg">
+        Read the thesis &rarr;
+      </a>
+    </div>
   </section>
 
   <!-- THE SHIFT -->
@@ -28,36 +33,52 @@ import Footer from '../components/layout/Footer.astro';
     <p class="font-mono text-label uppercase tracking-widest text-fg-tertiary mb-12">The shift</p>
 
     <p class="text-2xl lg:text-4xl font-medium leading-snug tracking-tight max-w-statement mb-16">
-      For two decades, the most valuable companies on the internet have been
-      databases with interfaces. The app was how you reached the data. The data
-      was the moat.
+      For two decades, product defensibility meant a database behind a
+      proprietary interface. The app was how you reached the data. The data was
+      the moat.
     </p>
 
-    <div class="max-w-body space-y-5">
-      <p class="text-base leading-relaxed text-fg-secondary">
-        That model is breaking — from multiple directions at once.
-      </p>
-      <p class="text-base leading-relaxed text-fg-secondary">
-        AI agents are becoming the primary interface. When a user asks an agent
-        to act on their behalf, the agent doesn't open your app — it needs
-        structured, open data it can read and transact with. If your data isn't
-        accessible, you're invisible.
-      </p>
-      <p class="text-base leading-relaxed text-fg-secondary">
-        Regulators are demanding portability. Users are expecting ownership. And
-        open protocols are making it possible to publish data in formats that
-        anyone — any app, any agent, any competitor — can build on.
-      </p>
-      <p class="text-base leading-relaxed text-fg-secondary">
-        The companies that adapt will define the standards their industries run
-        on. The ones that don't will find themselves intermediated by someone who
-        did.
-      </p>
+    <p class="text-base leading-relaxed text-fg-secondary max-w-body mb-4">
+      That model breaks the moment your distribution decentralizes — and it is
+      decentralizing from three directions at once.
+    </p>
+
+    <div class="max-w-statement">
+      <div class="border-t border-rule py-8">
+        <h3 class="text-lead font-medium tracking-tight mb-2">Agents bypass your interface entirely.</h3>
+        <p class="text-base leading-relaxed text-fg-secondary">
+          When an AI agent acts on a user's behalf, it doesn't navigate a UI. It
+          needs structured, open data it can parse and transact against. If your
+          data is only reachable through your app, you are invisible to the layer
+          that is becoming the front door.
+        </p>
+      </div>
+
+      <div class="border-t border-rule py-8">
+        <h3 class="text-lead font-medium tracking-tight mb-2">A rented audience is a single point of failure.</h3>
+        <p class="text-base leading-relaxed text-fg-secondary">
+          Ask any publisher who built a business on Facebook referral traffic and
+          watched it evaporate in one algorithm change. Discovery you don't
+          control is a term someone else can revise. When identity and data are
+          portable, the audience relationship travels with you instead.
+        </p>
+      </div>
+
+      <div class="border-t border-b border-rule py-8">
+        <h3 class="text-lead font-medium tracking-tight mb-2">Open networks reward whoever defines the standard.</h3>
+        <p class="text-base leading-relaxed text-fg-secondary">
+          AT Protocol isn't just another feed — it's an open schema layer. The
+          companies that define the Lexicons their industry runs on capture the
+          ecosystem built on top. Everyone else writes integrations against
+          someone else's data model.
+        </p>
+      </div>
     </div>
 
     <!-- AT Protocol -->
     <p class="text-2xl lg:text-4xl font-medium leading-snug tracking-tight max-w-statement mt-16 mb-12">
-      AT Protocol is the most credible infrastructure for this transition.
+      A strategy needs somewhere real to land. Today that is AT Protocol —
+      production-grade, not theoretical.
     </p>
 
     <div class="grid grid-cols-1 md:grid-cols-3">
@@ -65,24 +86,27 @@ import Footer from '../components/layout/Footer.astro';
         <p class="font-mono text-label text-accent-blue mb-4">01</p>
         <h3 class="text-lead font-medium tracking-tight mb-2">Identity</h3>
         <p class="text-sm leading-relaxed text-fg-secondary">
-          Verifiable identity tied to your domain. Portable, cryptographic,
-          owned by you — not rented from a platform.
+          Users and brands anchored to domains you already own. Cryptographically
+          verifiable, portable across every app on the network, independent of any
+          single platform operator.
         </p>
       </div>
       <div class="border-t md:border-l border-rule pt-8 pb-8 pr-8 md:pl-8">
         <p class="font-mono text-label text-accent-blue mb-4">02</p>
-        <h3 class="text-lead font-medium tracking-tight mb-2">Content</h3>
+        <h3 class="text-lead font-medium tracking-tight mb-2">Distribution</h3>
         <p class="text-sm leading-relaxed text-fg-secondary">
-          Data stored on infrastructure you control. Syndicates across every app
-          in the network. Switch platforms, keep your audience.
+          Publish once, syndicate to any feed, client, or agent on the network.
+          Custom algorithms mean you decide how your content is ranked and found —
+          not a black box you have no seat at.
         </p>
       </div>
       <div class="border-t md:border-l border-rule pt-8 pb-8 md:pl-8">
         <p class="font-mono text-label text-accent-blue mb-4">03</p>
-        <h3 class="text-lead font-medium tracking-tight mb-2">Interoperability</h3>
+        <h3 class="text-lead font-medium tracking-tight mb-2">Schemas</h3>
         <p class="text-sm leading-relaxed text-fg-secondary">
-          Open schemas — Lexicons — that make your data machine-readable by
-          default. Agents, apps, and competitors can all build on it.
+          Lexicons are machine-readable data contracts. Partners, agents, and
+          outside developers build against your model directly, with no bespoke
+          API surface for you to maintain.
         </p>
       </div>
     </div>
@@ -113,52 +137,66 @@ import Footer from '../components/layout/Footer.astro';
     <hr class="border-t border-rule mb-12" />
     <p class="font-mono text-label uppercase tracking-widest text-fg-tertiary mb-12">What we do</p>
 
+    <p class="text-2xl lg:text-4xl font-medium leading-snug tracking-tight max-w-statement mb-16">
+      We work with product leaders on the decisions this shift forces: what to
+      build, what to open, and what it is worth.
+    </p>
+
     <!-- Strategy -->
     <div class="grid grid-cols-1 md:grid-cols-[180px_1fr] gap-8 md:gap-16 py-10 border-t border-rule items-baseline">
-      <div class="text-sm font-medium tracking-tight">Strategy</div>
+      <div class="text-sm font-medium tracking-tight">Product strategy</div>
       <div class="grid grid-cols-1 lg:grid-cols-[1fr_200px] gap-8 lg:gap-12">
         <p class="text-ui leading-relaxed text-fg-secondary">
-          Where does AT Protocol fit in your business? We map the opportunity,
-          identify what to build first, and produce a roadmap your team can
-          execute against.
+          Where does this shift actually touch your product? We pressure-test
+          your distribution surfaces, size what agent-mediated discovery does to
+          your funnel, and come back with a position: what to build, what to
+          open, what to ignore, and in what order. An argument your exec team
+          can decide against, not a deck.
         </p>
         <div class="text-meta leading-loose text-fg-tertiary">
-          <span class="block">Readiness assessment</span>
-          <span class="block">Opportunity mapping</span>
-          <span class="block">Executive roadmap</span>
+          <span class="block font-mono text-chip uppercase tracking-widest mb-2">Deliverables</span>
+          <span class="block">Distribution risk assessment</span>
+          <span class="block">Opportunity sizing</span>
+          <span class="block">Phased roadmap</span>
+          <span class="block">Executive narrative</span>
         </div>
       </div>
     </div>
 
     <!-- Architecture -->
     <div class="grid grid-cols-1 md:grid-cols-[180px_1fr] gap-8 md:gap-16 py-10 border-t border-rule items-baseline">
-      <div class="text-sm font-medium tracking-tight">Architecture</div>
+      <div class="text-sm font-medium tracking-tight">Architecture &amp; schemas</div>
       <div class="grid grid-cols-1 lg:grid-cols-[1fr_200px] gap-8 lg:gap-12">
         <p class="text-ui leading-relaxed text-fg-secondary">
-          Identity systems, Lexicon design, data models, feed algorithms. The
-          technical foundations that make your protocol presence buildable,
-          maintainable, and interoperable.
+          A product strategy that can't survive contact with the data model
+          isn't one. We design the Lexicons, identity architecture, and feed
+          logic underneath the plan — so the thing you decided to build is the
+          thing that can actually be built, and agents can read it.
         </p>
         <div class="text-meta leading-loose text-fg-tertiary">
-          <span class="block">System design</span>
-          <span class="block">Identity strategy</span>
-          <span class="block">Lexicon design</span>
+          <span class="block font-mono text-chip uppercase tracking-widest mb-2">Deliverables</span>
+          <span class="block">Lexicon specifications</span>
+          <span class="block">Identity topology</span>
+          <span class="block">Federation specs</span>
         </div>
       </div>
     </div>
 
     <!-- Prototyping -->
     <div class="grid grid-cols-1 md:grid-cols-[180px_1fr] gap-8 md:gap-16 py-10 border-t border-b border-rule items-baseline">
-      <div class="text-sm font-medium tracking-tight">Prototyping</div>
+      <div class="text-sm font-medium tracking-tight">Off-stack prototyping</div>
       <div class="grid grid-cols-1 lg:grid-cols-[1fr_200px] gap-8 lg:gap-12">
         <p class="text-ui leading-relaxed text-fg-secondary">
-          Small, fast implementations built outside your production environment.
-          Test the thesis before you commit the roadmap.
+          Strategy is cheap until someone runs it. We build working feeds,
+          integrations, and protocol clients entirely outside your primary
+          repos — so you can put real evidence in front of the roadmap
+          conversation, and your engineers stay on what they already committed to.
         </p>
         <div class="text-meta leading-loose text-fg-tertiary">
-          <span class="block">Custom feeds</span>
-          <span class="block">Integration prototypes</span>
-          <span class="block">Technical validation</span>
+          <span class="block font-mono text-chip uppercase tracking-widest mb-2">Deliverables</span>
+          <span class="block">Custom algorithmic feeds</span>
+          <span class="block">Protocol clients</span>
+          <span class="block">Reference implementations</span>
         </div>
       </div>
     </div>
@@ -169,23 +207,31 @@ import Footer from '../components/layout/Footer.astro';
     <hr class="border-t border-rule mb-12" />
     <p class="font-mono text-label uppercase tracking-widest text-fg-tertiary mb-12">Why a studio</p>
 
+    <p class="text-2xl lg:text-4xl font-medium leading-snug tracking-tight max-w-statement mb-12">
+      The hard part isn't building on a protocol. It's knowing which bet is
+      worth making.
+    </p>
+
     <div class="max-w-body space-y-5">
       <p class="text-base leading-relaxed text-fg-secondary">
-        This transition requires a different kind of thinking than your team is
-        staffed for. Not because they aren't capable — because the mental model
-        is different. Centralized architecture and decentralized protocols are
-        fundamentally different design problems.
+        Plenty of teams can ship an integration once someone tells them what to
+        ship. The expensive question is the one before that: whether this shift
+        genuinely threatens your distribution, which surfaces are exposed, what
+        you commit in which order, and what you're willing to open. Those are
+        product decisions, and they get made badly when the only people in the
+        room are the ones who would build it.
       </p>
       <p class="text-base leading-relaxed text-fg-secondary">
-        We provide protocol fluency. We've internalized how identity, data, and
-        distribution work in a federated system so your team doesn't have to
-        start from zero.
+        We bring protocol fluency into that conversation on day one —
+        federation, cryptographic identity, schema design — so the strategy is
+        grounded in what the technology will actually do, not in what a vendor
+        deck claims. Then we build enough of it, off-stack, to find out whether
+        the answer holds before you stake a roadmap on it.
       </p>
       <p class="text-base leading-relaxed text-fg-secondary">
         And when the work involves defining open standards, neutrality matters. A
-        schema designed by one platform will be resisted by its competitors. We
-        sit outside that dynamic — which is exactly where this work needs to
-        happen.
+        schema authored by one platform gets resisted by its competitors. We sit
+        outside that dynamic — which is exactly where this work needs to happen.
       </p>
     </div>
   </section>
@@ -193,13 +239,14 @@ import Footer from '../components/layout/Footer.astro';
   <!-- CONTACT -->
   <section class="pt-30 pb-20 fade-in" id="contact">
     <hr class="border-t border-rule mb-12" />
-    <p class="text-2xl lg:text-4xl font-medium leading-snug tracking-tight max-w-cta mb-6">
-      Let's talk about what you're thinking.
+    <p class="text-2xl lg:text-4xl font-medium leading-snug tracking-tight max-w-lead mb-6">
+      Let's pressure-test your distribution strategy.
     </p>
     <p class="text-ui text-fg-secondary mb-10 leading-relaxed max-w-note">
-      No contact form, no email funnel. We take conversations the way the open
-      network is meant to work — a direct, end-to-end encrypted message over AT
-      Protocol.
+      Whether you're mapping an 18-month product response to agentic search or
+      want an off-stack prototype running on AT Protocol, start the
+      conversation. We answer on the network we build on — a direct,
+      end-to-end encrypted message.
     </p>
 
     <div class="flex flex-col sm:flex-row gap-4">

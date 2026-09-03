@@ -8,20 +8,31 @@ const projects = [
   {
     n: '01',
     title: 'Antiphony',
-    client: 'Open audio infrastructure',
-    type: 'Protocol / Infrastructure',
-    did: 'Designed the dev.antiphony.* Lexicons — audio posts, replies, identity, and transcription — and built the open-core backend that serves them behind a single HTTP API, with self-hosting for teams that want to run their own.',
-    why: 'Audio social has been trapped in proprietary silos. Putting posts, replies, and transcription on open Lexicons makes audio content portable across the AT Protocol network, so developers can build new apps on shared infrastructure instead of rebuilding it from scratch.',
-    stack: ['Lexicon design', 'AT Protocol', 'HTTP API', 'Transcription'],
-    link: { href: 'https://docs.antiphony.dev/', label: 'Read the docs' },
+    client: 'Open audio infrastructure — and the layer Vox Pop runs on',
+    type: 'Product strategy / Protocol',
+    decision:
+      'Vox Pop needed an audio backend: record a prompt, collect spoken replies, transcribe them. The default move is to build that as private plumbing — your schema, your database, your API — and call the accumulated audio a moat. The real question was whether the audio layer was worth defending at all, or whether defending it was the thing that would cap the product.',
+    call:
+      'Split it out and give it away. Antiphony became a separate MIT-licensed open core: a set of dev.antiphony.* Lexicons — audio posts, replies, identity, transcription — defined as portable AT Protocol records, served behind a single HTTP API, self-hostable by anyone who wants to run their own. Competitors included.',
+    proved:
+      'Vox Pop shipped on it. Listeners sign in with their Bluesky handle, so the identity is theirs rather than an account we issue, and every reply is a real audio file the creator can download and walk away with. Because storing audio cannot be what makes anyone choose Vox Pop, the product is forced to win on the creator workflow instead — hotline numbers, SMS reply-back, denoising, summaries. A second app already runs on the same records. That is the thesis in production rather than on a slide.',
+    stack: ['Lexicon design', 'AT Protocol', 'MIT open core', 'HTTP API', 'Transcription'],
+    links: [
+      { href: 'https://docs.antiphony.dev/', label: 'Read the docs' },
+      { href: 'https://voxpop.audio/', label: 'See Vox Pop' },
+    ],
   },
   {
     n: '02',
     title: 'Lexicon & identity design',
     client: 'Domain platform',
     type: 'Architecture / Standards',
-    did: 'Authored a set of Lexicons for the client’s core record types and wired domain-based handle verification, so their identities are portable and cryptographically owned rather than rented.',
-    why: 'Defining the schema early makes the org’s data machine-readable by default and interoperable with any future app — theirs, a partner’s, or an agent’s.',
+    decision:
+      'The team could keep issuing platform-owned accounts and model their core records privately, or define those records in the open and anchor identity to domains their customers already control.',
+    call:
+      'Author Lexicons for the core record types and wire domain-based handle verification, so identities are cryptographically owned rather than rented, and the data model is machine-readable by default.',
+    proved:
+      'Defining the schema early is the cheapest it will ever be. Any future reader — their own next app, a partner, an agent — builds against a published contract instead of a bespoke integration.',
     stack: ['Lexicon design', 'DID / handles', 'PDS'],
   },
   {
@@ -29,28 +40,33 @@ const projects = [
     title: 'Protocol prototype',
     client: 'Early-stage team',
     type: 'Prototyping / Validation',
-    did: 'Built a two-week prototype outside production that put the client’s core interaction on AT Protocol, to test whether the thesis held before committing a roadmap.',
-    why: 'Cheap proof beats an expensive plan. The prototype answered the open technical questions and de-risked the decision to build.',
+    decision:
+      'Commit a quarter of roadmap to a protocol bet on the strength of an argument, or spend two weeks finding out whether the argument survives contact with the technology.',
+    call:
+      'Build the core interaction on AT Protocol outside production, targeting only the questions that would actually change the decision.',
+    proved:
+      'Cheap proof beats an expensive plan. The prototype closed the open technical questions and turned a roadmap argument into a decision the team could defend.',
     stack: ['TypeScript', '@atproto/api', 'AppView'],
   },
 ];
+
 ---
 
 <BaseLayout
   title="Work — Bird Candy"
-  description="Selected AT Protocol work from Bird Candy: what we built, and why it mattered."
+  description="Selected AT Protocol work from Bird Candy: the calls we made, the reasoning behind them, and what they bought."
 >
   <!-- HERO -->
   <section class="pt-20 pb-16 lg:pt-30 lg:pb-20">
     <p class="font-mono text-label uppercase tracking-widest text-fg-tertiary mb-8">Work</p>
     <h1 class="text-4xl lg:text-6xl font-medium leading-display tracking-tighter max-w-statement mb-10">
-      What we built,<br />
-      <span class="text-fg-faint">and why.</span>
+      What we decided,<br />
+      <span class="text-fg-faint">and what it bought.</span>
     </h1>
     <p class="text-lead leading-relaxed text-fg-secondary max-w-lead">
-      We work in the open. Most of what we do starts as a small, sharp
-      implementation — a feed, a Lexicon, a prototype — that tests a thesis
-      before anyone commits a roadmap. A few representative engagements below.
+      This isn't a list of deliverables. Each entry is a call someone had to
+      make, the reasoning we brought to it, and what it turned out to be worth —
+      because the decision is the part that's hard to buy anywhere else.
     </p>
   </section>
 
@@ -64,14 +80,17 @@ const projects = [
           <p class="font-mono text-label uppercase tracking-widest text-fg-tertiary">{p.type}</p>
         </div>
 
-        <div class="max-w-body">
+        <div class="max-w-lead">
           <p class="text-meta text-fg-tertiary mb-6">{p.client}</p>
 
-          <p class="font-mono text-label uppercase tracking-widest text-fg-tertiary mb-2">What we did</p>
-          <p class="text-ui leading-relaxed text-fg-secondary mb-6">{p.did}</p>
+          <p class="font-mono text-label uppercase tracking-widest text-fg-tertiary mb-2">The decision</p>
+          <p class="text-ui leading-relaxed text-fg-secondary mb-6">{p.decision}</p>
 
-          <p class="font-mono text-label uppercase tracking-widest text-fg-tertiary mb-2">Why</p>
-          <p class="text-ui leading-relaxed text-fg-secondary mb-6">{p.why}</p>
+          <p class="font-mono text-label uppercase tracking-widest text-fg-tertiary mb-2">The call</p>
+          <p class="text-ui leading-relaxed text-fg mb-6 border-l-2 border-accent pl-4">{p.call}</p>
+
+          <p class="font-mono text-label uppercase tracking-widest text-fg-tertiary mb-2">What it bought</p>
+          <p class="text-ui leading-relaxed text-fg-secondary mb-6">{p.proved}</p>
 
           <div class="flex flex-wrap gap-2">
             {p.stack.map((tag) => (
@@ -81,15 +100,19 @@ const projects = [
             ))}
           </div>
 
-          {p.link && (
-            <a
-              href={p.link.href}
-              target="_blank"
-              rel="noopener"
-              class="mt-6 inline-flex items-center gap-1.5 font-mono text-meta text-fg-secondary no-underline border-b border-rule pb-0.5 transition-colors duration-150 hover:text-accent-ink hover:border-accent"
-            >
-              {p.link.label} &rarr;
-            </a>
+          {p.links && (
+            <div class="mt-6 flex flex-wrap gap-6">
+              {p.links.map((l) => (
+                <a
+                  href={l.href}
+                  target="_blank"
+                  rel="noopener"
+                  class="inline-flex items-center gap-1.5 font-mono text-meta text-fg-secondary no-underline border-b border-rule pb-0.5 transition-colors duration-150 hover:text-fg hover:border-fg"
+                >
+                  {l.label} &rarr;
+                </a>
+              ))}
+            </div>
           )}
         </div>
       </article>
@@ -100,7 +123,7 @@ const projects = [
   <section class="fade-in pt-6 pb-20">
     <hr class="border-t border-rule mb-12" />
     <p class="text-2xl lg:text-3xl font-medium leading-snug tracking-tight max-w-cta mb-6">
-      Thinking about your own protocol move?
+      Facing a call like one of these?
     </p>
     <a
       href="/#contact"
