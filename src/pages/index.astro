@@ -7,21 +7,21 @@ import Footer from '../components/layout/Footer.astro';
 
   <!-- HERO -->
   <section class="pt-20 pb-32 lg:pt-30 lg:pb-40">
-    <h1 class="text-4xl lg:text-6xl xl:text-7xl font-medium leading-[1.05] tracking-tighter max-w-[820px] mb-12">
+    <h1 class="text-4xl lg:text-6xl xl:text-7xl font-medium leading-display tracking-tighter max-w-headline mb-12">
       The platform moat is gone.<br/>
-      <span class="text-fg-tertiary">Distribution has to be portable.</span>
+      <span class="text-fg-faint">Distribution has to be portable.</span>
     </h1>
-    <p class="text-[17px] leading-relaxed text-fg-secondary max-w-[560px] mb-8">
+    <p class="text-lead leading-relaxed text-fg-secondary max-w-lead mb-8">
       Bird Candy is a product strategy studio for the open protocol shift. We
       help product leaders decide what to build as AI agents and open networks
       rewire distribution — then prove the answer on AT Protocol, off-stack,
       before it touches your roadmap.
     </p>
     <div class="flex flex-wrap items-center gap-8">
-      <a href="#contact" class="inline-flex items-center gap-1.5 text-sm font-medium text-fg no-underline border-b border-rule pb-0.5 transition-colors duration-150 hover:text-accent hover:border-accent">
+      <a href="#contact" class="inline-flex items-center gap-1.5 text-sm font-medium text-fg no-underline border-b border-rule pb-0.5 transition-[border-color] duration-150 hover:border-fg">
         Start a conversation &rarr;
       </a>
-      <a href="/thesis/" class="inline-flex items-center gap-1.5 text-sm font-medium text-fg-tertiary no-underline border-b border-rule pb-0.5 transition-colors duration-150 hover:text-accent hover:border-accent">
+      <a href="/thesis/" class="inline-flex items-center gap-1.5 text-sm font-medium text-fg-secondary no-underline border-b border-rule pb-0.5 transition-[border-color] duration-150 hover:border-fg">
         Read the thesis &rarr;
       </a>
     </div>
@@ -30,22 +30,22 @@ import Footer from '../components/layout/Footer.astro';
   <!-- THE SHIFT -->
   <section class="py-20 fade-in" id="the-shift">
     <hr class="border-t border-rule mb-12" />
-    <p class="font-mono text-[11px] uppercase tracking-widest text-fg-tertiary mb-12">The shift</p>
+    <p class="font-mono text-label uppercase tracking-widest text-fg-tertiary mb-12">The shift</p>
 
-    <p class="text-2xl lg:text-4xl font-medium leading-snug tracking-tight max-w-[640px] mb-16">
+    <p class="text-2xl lg:text-4xl font-medium leading-snug tracking-tight max-w-statement mb-16">
       For two decades, product defensibility meant a database behind a
       proprietary interface. The app was how you reached the data. The data was
       the moat.
     </p>
 
-    <p class="text-base leading-relaxed text-fg-secondary max-w-[600px] mb-4">
+    <p class="text-base leading-relaxed text-fg-secondary max-w-body mb-4">
       That model breaks the moment your distribution decentralizes — and it is
       decentralizing from three directions at once.
     </p>
 
-    <div class="max-w-[640px]">
+    <div class="max-w-statement">
       <div class="border-t border-rule py-8">
-        <h3 class="text-[17px] font-medium tracking-tight mb-2">Agents bypass your interface entirely.</h3>
+        <h3 class="text-lead font-medium tracking-tight mb-2">Agents bypass your interface entirely.</h3>
         <p class="text-base leading-relaxed text-fg-secondary">
           When an AI agent acts on a user's behalf, it doesn't navigate a UI. It
           needs structured, open data it can parse and transact against. If your
@@ -55,7 +55,7 @@ import Footer from '../components/layout/Footer.astro';
       </div>
 
       <div class="border-t border-rule py-8">
-        <h3 class="text-[17px] font-medium tracking-tight mb-2">A rented audience is a single point of failure.</h3>
+        <h3 class="text-lead font-medium tracking-tight mb-2">A rented audience is a single point of failure.</h3>
         <p class="text-base leading-relaxed text-fg-secondary">
           Ask any publisher who built a business on Facebook referral traffic and
           watched it evaporate in one algorithm change. Discovery you don't
@@ -65,7 +65,7 @@ import Footer from '../components/layout/Footer.astro';
       </div>
 
       <div class="border-t border-b border-rule py-8">
-        <h3 class="text-[17px] font-medium tracking-tight mb-2">Open networks reward whoever defines the standard.</h3>
+        <h3 class="text-lead font-medium tracking-tight mb-2">Open networks reward whoever defines the standard.</h3>
         <p class="text-base leading-relaxed text-fg-secondary">
           AT Protocol isn't just another feed — it's an open schema layer. The
           companies that define the Lexicons their industry runs on capture the
@@ -76,15 +76,15 @@ import Footer from '../components/layout/Footer.astro';
     </div>
 
     <!-- AT Protocol -->
-    <p class="text-2xl lg:text-4xl font-medium leading-snug tracking-tight max-w-[640px] mt-16 mb-12">
+    <p class="text-2xl lg:text-4xl font-medium leading-snug tracking-tight max-w-statement mt-16 mb-12">
       A strategy needs somewhere real to land. Today that is AT Protocol —
       production-grade, not theoretical.
     </p>
 
     <div class="grid grid-cols-1 md:grid-cols-3">
       <div class="border-t border-rule pt-8 pb-8 pr-8">
-        <p class="font-mono text-[11px] text-accent-blue mb-4">01</p>
-        <h3 class="text-[17px] font-medium tracking-tight mb-2">Identity</h3>
+        <p class="font-mono text-label text-accent-blue mb-4">01</p>
+        <h3 class="text-lead font-medium tracking-tight mb-2">Identity</h3>
         <p class="text-sm leading-relaxed text-fg-secondary">
           Users and brands anchored to domains you already own. Cryptographically
           verifiable, portable across every app on the network, independent of any
@@ -92,8 +92,8 @@ import Footer from '../components/layout/Footer.astro';
         </p>
       </div>
       <div class="border-t md:border-l border-rule pt-8 pb-8 pr-8 md:pl-8">
-        <p class="font-mono text-[11px] text-accent-blue mb-4">02</p>
-        <h3 class="text-[17px] font-medium tracking-tight mb-2">Distribution</h3>
+        <p class="font-mono text-label text-accent-blue mb-4">02</p>
+        <h3 class="text-lead font-medium tracking-tight mb-2">Distribution</h3>
         <p class="text-sm leading-relaxed text-fg-secondary">
           Publish once, syndicate to any feed, client, or agent on the network.
           Custom algorithms mean you decide how your content is ranked and found —
@@ -101,8 +101,8 @@ import Footer from '../components/layout/Footer.astro';
         </p>
       </div>
       <div class="border-t md:border-l border-rule pt-8 pb-8 md:pl-8">
-        <p class="font-mono text-[11px] text-accent-blue mb-4">03</p>
-        <h3 class="text-[17px] font-medium tracking-tight mb-2">Schemas</h3>
+        <p class="font-mono text-label text-accent-blue mb-4">03</p>
+        <h3 class="text-lead font-medium tracking-tight mb-2">Schemas</h3>
         <p class="text-sm leading-relaxed text-fg-secondary">
           Lexicons are machine-readable data contracts. Partners, agents, and
           outside developers build against your model directly, with no bespoke
@@ -115,19 +115,19 @@ import Footer from '../components/layout/Footer.astro';
     <div class="grid grid-cols-2 md:grid-cols-4 border-t border-b border-rule mt-12">
       <div class="py-8 pr-6">
         <div class="text-3xl font-medium tracking-tight mb-1">43M+</div>
-        <div class="text-[13px] text-fg-tertiary leading-snug">Bluesky users</div>
+        <div class="text-meta text-fg-tertiary leading-snug">Bluesky users</div>
       </div>
       <div class="border-l border-rule py-8 px-6">
         <div class="text-3xl font-medium tracking-tight mb-1">$100M</div>
-        <div class="text-[13px] text-fg-tertiary leading-snug">Series B, 2026</div>
+        <div class="text-meta text-fg-tertiary leading-snug">Series B, 2026</div>
       </div>
       <div class="border-l border-rule py-8 px-6">
         <div class="text-3xl font-medium tracking-tight mb-1">IETF</div>
-        <div class="text-[13px] text-fg-tertiary leading-snug">Standardization underway</div>
+        <div class="text-meta text-fg-tertiary leading-snug">Standardization underway</div>
       </div>
       <div class="border-l border-rule py-8 pl-6">
         <div class="text-3xl font-medium tracking-tight mb-1">1,000+</div>
-        <div class="text-[13px] text-fg-tertiary leading-snug">Weekly active apps</div>
+        <div class="text-meta text-fg-tertiary leading-snug">Weekly active apps</div>
       </div>
     </div>
   </section>
@@ -135,9 +135,9 @@ import Footer from '../components/layout/Footer.astro';
   <!-- WHAT WE DO -->
   <section class="py-20 fade-in" id="capabilities">
     <hr class="border-t border-rule mb-12" />
-    <p class="font-mono text-[11px] uppercase tracking-widest text-fg-tertiary mb-12">What we do</p>
+    <p class="font-mono text-label uppercase tracking-widest text-fg-tertiary mb-12">What we do</p>
 
-    <p class="text-2xl lg:text-4xl font-medium leading-snug tracking-tight max-w-[640px] mb-16">
+    <p class="text-2xl lg:text-4xl font-medium leading-snug tracking-tight max-w-statement mb-16">
       We work with product leaders on the decisions this shift forces: what to
       build, what to open, and what it is worth.
     </p>
@@ -146,15 +146,15 @@ import Footer from '../components/layout/Footer.astro';
     <div class="grid grid-cols-1 md:grid-cols-[180px_1fr] gap-8 md:gap-16 py-10 border-t border-rule items-baseline">
       <div class="text-sm font-medium tracking-tight">Product strategy</div>
       <div class="grid grid-cols-1 lg:grid-cols-[1fr_200px] gap-8 lg:gap-12">
-        <p class="text-[15px] leading-relaxed text-fg-secondary">
+        <p class="text-ui leading-relaxed text-fg-secondary">
           Where does this shift actually touch your product? We pressure-test
           your distribution surfaces, size what agent-mediated discovery does to
           your funnel, and come back with a position: what to build, what to
           open, what to ignore, and in what order. An argument your exec team
           can decide against, not a deck.
         </p>
-        <div class="text-[13px] leading-loose text-fg-tertiary">
-          <span class="block font-mono text-[10px] uppercase tracking-widest mb-2">Deliverables</span>
+        <div class="text-meta leading-loose text-fg-tertiary">
+          <span class="block font-mono text-chip uppercase tracking-widest mb-2">Deliverables</span>
           <span class="block">Distribution risk assessment</span>
           <span class="block">Opportunity sizing</span>
           <span class="block">Phased roadmap</span>
@@ -167,14 +167,14 @@ import Footer from '../components/layout/Footer.astro';
     <div class="grid grid-cols-1 md:grid-cols-[180px_1fr] gap-8 md:gap-16 py-10 border-t border-rule items-baseline">
       <div class="text-sm font-medium tracking-tight">Architecture &amp; schemas</div>
       <div class="grid grid-cols-1 lg:grid-cols-[1fr_200px] gap-8 lg:gap-12">
-        <p class="text-[15px] leading-relaxed text-fg-secondary">
+        <p class="text-ui leading-relaxed text-fg-secondary">
           A product strategy that can't survive contact with the data model
           isn't one. We design the Lexicons, identity architecture, and feed
           logic underneath the plan — so the thing you decided to build is the
           thing that can actually be built, and agents can read it.
         </p>
-        <div class="text-[13px] leading-loose text-fg-tertiary">
-          <span class="block font-mono text-[10px] uppercase tracking-widest mb-2">Deliverables</span>
+        <div class="text-meta leading-loose text-fg-tertiary">
+          <span class="block font-mono text-chip uppercase tracking-widest mb-2">Deliverables</span>
           <span class="block">Lexicon specifications</span>
           <span class="block">Identity topology</span>
           <span class="block">Federation specs</span>
@@ -186,14 +186,14 @@ import Footer from '../components/layout/Footer.astro';
     <div class="grid grid-cols-1 md:grid-cols-[180px_1fr] gap-8 md:gap-16 py-10 border-t border-b border-rule items-baseline">
       <div class="text-sm font-medium tracking-tight">Off-stack prototyping</div>
       <div class="grid grid-cols-1 lg:grid-cols-[1fr_200px] gap-8 lg:gap-12">
-        <p class="text-[15px] leading-relaxed text-fg-secondary">
+        <p class="text-ui leading-relaxed text-fg-secondary">
           Strategy is cheap until someone runs it. We build working feeds,
           integrations, and protocol clients entirely outside your primary
           repos — so you can put real evidence in front of the roadmap
           conversation, and your engineers stay on what they already committed to.
         </p>
-        <div class="text-[13px] leading-loose text-fg-tertiary">
-          <span class="block font-mono text-[10px] uppercase tracking-widest mb-2">Deliverables</span>
+        <div class="text-meta leading-loose text-fg-tertiary">
+          <span class="block font-mono text-chip uppercase tracking-widest mb-2">Deliverables</span>
           <span class="block">Custom algorithmic feeds</span>
           <span class="block">Protocol clients</span>
           <span class="block">Reference implementations</span>
@@ -205,14 +205,14 @@ import Footer from '../components/layout/Footer.astro';
   <!-- WHY A STUDIO -->
   <section class="py-20 fade-in" id="why-studio">
     <hr class="border-t border-rule mb-12" />
-    <p class="font-mono text-[11px] uppercase tracking-widest text-fg-tertiary mb-12">Why a studio</p>
+    <p class="font-mono text-label uppercase tracking-widest text-fg-tertiary mb-12">Why a studio</p>
 
-    <p class="text-2xl lg:text-4xl font-medium leading-snug tracking-tight max-w-[640px] mb-12">
+    <p class="text-2xl lg:text-4xl font-medium leading-snug tracking-tight max-w-statement mb-12">
       The hard part isn't building on a protocol. It's knowing which bet is
       worth making.
     </p>
 
-    <div class="max-w-[600px] space-y-5">
+    <div class="max-w-body space-y-5">
       <p class="text-base leading-relaxed text-fg-secondary">
         Plenty of teams can ship an integration once someone tells them what to
         ship. The expensive question is the one before that: whether this shift
@@ -239,10 +239,10 @@ import Footer from '../components/layout/Footer.astro';
   <!-- CONTACT -->
   <section class="pt-30 pb-20 fade-in" id="contact">
     <hr class="border-t border-rule mb-12" />
-    <p class="text-2xl lg:text-4xl font-medium leading-snug tracking-tight max-w-[560px] mb-6">
+    <p class="text-2xl lg:text-4xl font-medium leading-snug tracking-tight max-w-lead mb-6">
       Let's pressure-test your distribution strategy.
     </p>
-    <p class="text-[15px] text-fg-secondary mb-10 leading-relaxed max-w-[460px]">
+    <p class="text-ui text-fg-secondary mb-10 leading-relaxed max-w-note">
       Whether you're mapping an 18-month product response to agentic search or
       want an off-stack prototype running on AT Protocol, start the
       conversation. We answer on the network we build on — a direct,
@@ -258,15 +258,15 @@ import Footer from '../components/layout/Footer.astro';
       >
         <span>
           <span class="block text-sm font-medium tracking-tight">Message us on Bluesky</span>
-          <span class="block font-mono text-[13px] text-fg-tertiary">@birdcandy.com</span>
+          <span class="block font-mono text-meta text-fg-tertiary">@birdcandy.com</span>
         </span>
         <span class="text-fg-tertiary transition-colors duration-150 group-hover:text-fg">&rarr;</span>
       </a>
     </div>
 
-    <p class="mt-6 text-[13px] leading-relaxed text-fg-tertiary max-w-[460px]">
+    <p class="mt-6 text-meta leading-relaxed text-fg-tertiary max-w-note">
       DMs are end-to-end encrypted via
-      <a href="https://www.germnetwork.com/" target="_blank" rel="noopener" class="border-b border-rule pb-px transition-colors duration-150 hover:text-accent hover:border-accent">Germ</a>
+      <a href="https://www.germnetwork.com/" target="_blank" rel="noopener" class="border-b border-rule pb-px transition-colors duration-150 hover:text-accent-ink hover:border-accent">Germ</a>
       — no separate account needed, just your Bluesky handle.
     </p>
   </section>

@@ -1,15 +1,19 @@
 ---
 import '../styles/global.css';
 import Sidebar from '../components/layout/Sidebar.astro';
+import MobileNav from '../components/layout/MobileNav.astro';
 
 interface Props {
   title?: string;
   description?: string;
+  /** Keep drafts out of search results while they are still shareable by URL. */
+  noindex?: boolean;
 }
 
 const {
   title = 'Bird Candy — Product strategy for the open protocol shift',
   description = 'Bird Candy is a product strategy studio for the open protocol shift. We help product leaders decide what to build as AI agents and open networks rewire distribution — then prove it on AT Protocol.',
+  noindex = false,
 } = Astro.props;
 ---
 
@@ -22,15 +26,26 @@ const {
     <meta name="viewport" content="width=device-width" />
     <meta name="description" content={description} />
     <meta name="generator" content={Astro.generator} />
+    {noindex && <meta name="robots" content="noindex, nofollow" />}
     <title>{title}</title>
+    {/* PALETTE MIRROR: a <meta> can't read a CSS custom property, so these two
+        values duplicate --color-bg in global.css. Change them together. */}
+    <meta name="theme-color" content="#f5f5f3" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#111110" media="(prefers-color-scheme: dark)" />
+    <script is:inline>
+      // Gate the scroll-reveal on JS so content is never stuck invisible.
+      document.documentElement.classList.add('js');
+    </script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
   </head>
   <body>
-    <div class="lg:grid lg:grid-cols-[240px_1fr] min-h-screen max-w-[1400px] mx-auto">
+    <a href="#main" class="skip-link">Skip to content</a>
+    <MobileNav />
+    <div class="lg:grid lg:grid-cols-[240px_1fr] min-h-screen max-w-shell mx-auto">
       <Sidebar />
-      <main class="px-6 py-10 pb-30 lg:px-16 lg:py-10">
+      <main id="main" class="px-6 py-10 pb-30 lg:px-16 lg:py-10">
         <slot />
       </main>
     </div>

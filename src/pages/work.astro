@@ -58,12 +58,12 @@ const projects = [
 >
   <!-- HERO -->
   <section class="pt-20 pb-16 lg:pt-30 lg:pb-20">
-    <p class="font-mono text-[11px] uppercase tracking-widest text-fg-tertiary mb-8">Work</p>
-    <h1 class="text-4xl lg:text-6xl font-medium leading-[1.05] tracking-tighter max-w-[640px] mb-10">
+    <p class="font-mono text-label uppercase tracking-widest text-fg-tertiary mb-8">Work</p>
+    <h1 class="text-4xl lg:text-6xl font-medium leading-display tracking-tighter max-w-statement mb-10">
       What we decided,<br />
-      <span class="text-fg-tertiary">and what it bought.</span>
+      <span class="text-fg-faint">and what it bought.</span>
     </h1>
-    <p class="text-[17px] leading-relaxed text-fg-secondary max-w-[520px]">
+    <p class="text-lead leading-relaxed text-fg-secondary max-w-lead">
       This isn't a list of deliverables. Each entry is a call someone had to
       make, the reasoning we brought to it, and what it turned out to be worth —
       because the decision is the part that's hard to buy anywhere else.
@@ -75,26 +75,26 @@ const projects = [
     {projects.map((p) => (
       <article class="fade-in grid grid-cols-1 md:grid-cols-[180px_1fr] gap-8 md:gap-16 py-12 border-t border-rule">
         <div>
-          <p class="font-mono text-[11px] text-fg-tertiary mb-3">{p.n}</p>
+          <p class="font-mono text-label text-fg-tertiary mb-3">{p.n}</p>
           <h2 class="text-xl font-medium tracking-tight mb-1">{p.title}</h2>
-          <p class="font-mono text-[11px] uppercase tracking-widest text-fg-tertiary">{p.type}</p>
+          <p class="font-mono text-label uppercase tracking-widest text-fg-tertiary">{p.type}</p>
         </div>
 
-        <div class="max-w-[560px]">
-          <p class="text-[13px] text-fg-tertiary mb-6">{p.client}</p>
+        <div class="max-w-lead">
+          <p class="text-meta text-fg-tertiary mb-6">{p.client}</p>
 
-          <p class="font-mono text-[11px] uppercase tracking-widest text-fg-tertiary mb-2">The decision</p>
-          <p class="text-[15px] leading-relaxed text-fg-secondary mb-6">{p.decision}</p>
+          <p class="font-mono text-label uppercase tracking-widest text-fg-tertiary mb-2">The decision</p>
+          <p class="text-ui leading-relaxed text-fg-secondary mb-6">{p.decision}</p>
 
-          <p class="font-mono text-[11px] uppercase tracking-widest text-fg-tertiary mb-2">The call</p>
-          <p class="text-[15px] leading-relaxed text-fg mb-6 border-l-2 border-accent pl-4">{p.call}</p>
+          <p class="font-mono text-label uppercase tracking-widest text-fg-tertiary mb-2">The call</p>
+          <p class="text-ui leading-relaxed text-fg mb-6 border-l-2 border-accent pl-4">{p.call}</p>
 
-          <p class="font-mono text-[11px] uppercase tracking-widest text-fg-tertiary mb-2">What it bought</p>
-          <p class="text-[15px] leading-relaxed text-fg-secondary mb-6">{p.proved}</p>
+          <p class="font-mono text-label uppercase tracking-widest text-fg-tertiary mb-2">What it bought</p>
+          <p class="text-ui leading-relaxed text-fg-secondary mb-6">{p.proved}</p>
 
           <div class="flex flex-wrap gap-2">
             {p.stack.map((tag) => (
-              <span class="font-mono text-[11px] text-fg-tertiary border border-rule rounded-full px-2.5 py-1">
+              <span class="font-mono text-label text-fg-tertiary border border-rule rounded-full px-2.5 py-1">
                 {tag}
               </span>
             ))}
@@ -107,7 +107,7 @@ const projects = [
                   href={l.href}
                   target="_blank"
                   rel="noopener"
-                  class="inline-flex items-center gap-1.5 font-mono text-[13px] text-fg-secondary no-underline border-b border-rule pb-0.5 transition-colors duration-150 hover:text-fg hover:border-fg"
+                  class="inline-flex items-center gap-1.5 font-mono text-meta text-fg-secondary no-underline border-b border-rule pb-0.5 transition-colors duration-150 hover:text-fg hover:border-fg"
                 >
                   {l.label} &rarr;
                 </a>
@@ -122,7 +122,7 @@ const projects = [
   <!-- CTA -->
   <section class="fade-in pt-6 pb-20">
     <hr class="border-t border-rule mb-12" />
-    <p class="text-2xl lg:text-3xl font-medium leading-snug tracking-tight max-w-[500px] mb-6">
+    <p class="text-2xl lg:text-3xl font-medium leading-snug tracking-tight max-w-cta mb-6">
       Facing a call like one of these?
     </p>
     <a

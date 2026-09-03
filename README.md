@@ -18,13 +18,22 @@ editing `src/pages/`.
 | `src/pages/index.astro` | Landing page — the distribution/moat argument, what we do, why a studio, contact |
 | `src/pages/work.astro` | Case studies, framed as decision / call / what it bought. Entry 01 (Antiphony) is real; 02–03 are placeholder archetypes |
 | `src/pages/thesis.astro` | The long-form argument: win on functionality, not data model |
-| `src/components/layout/` | `Sidebar.astro` (nav + section anchors), `Footer.astro` |
+| `src/pages/writing/` | Post index and `[...slug]` renderer for the `writing` content collection |
+| `src/content/writing/` | The posts themselves, MDX. `draft: true` keeps one out of the sitemap and adds `noindex` |
+| `src/components/layout/` | `nav.ts` (single source of nav truth), `Sidebar.astro`, `MobileNav.astro`, `Footer.astro`, `Logo.astro` |
 | `src/styles/global.css` | Tailwind theme tokens — type scale, rules, and the two candy accents |
 | `src/layouts/BaseLayout.astro` | Shell, default `<title>`/description, fade-in observer |
 
-Section anchors in the sidebar (`/#the-shift`, `/#capabilities`, `/#why-studio`,
-`/#contact`) are root-relative so they resolve from subpages. If you rename a
-section `id` on the landing page, update `Sidebar.astro` to match.
+Nav lives in `src/components/layout/nav.ts` — the sidebar, the mobile bar, and
+the footer all read from it so they can't drift. The section anchors it lists
+(`/#the-shift`, `/#capabilities`, `/#why-studio`, `/#contact`) are
+root-relative so they resolve from subpages; if you rename a section `id` on the
+landing page, update `nav.ts` to match.
+
+Type sizes, measures, and colors are tokens in `global.css` (`text-lead`,
+`max-w-body`, `text-fg-faint`, and so on) rather than raw values, and the
+palette has a dark-mode counterpart. Use the tokens — a hardcoded `text-[15px]`
+or `#999` will look right in light mode and wrong in dark.
 
 ## Stack
 
@@ -33,11 +42,10 @@ section `id` on the landing page, update `Sidebar.astro` to match.
 - [`@astrojs/cloudflare`](https://docs.astro.build/en/guides/integrations-guide/cloudflare/) adapter
 - Hosted on **Cloudflare Workers**
 
-`@astrojs/mdx` and `@astrojs/sitemap` are installed and registered in
-`astro.config.mjs`, but neither is doing anything yet: there is no `.mdx`
-content, and sitemap skips every build because the config has no `site` option.
-Set `site` in `astro.config.mjs` when the production domain is settled and the
-sitemap will start emitting.
+MDX backs the `writing` collection. Sitemap is registered and filters out
+drafts, but it still skips on every build because `astro.config.mjs` has no
+`site` option — set one when the production domain is settled and it will start
+emitting.
 
 ## Develop
 
