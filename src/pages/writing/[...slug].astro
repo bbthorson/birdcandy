@@ -42,27 +42,27 @@ const fmt = post.data.date.toLocaleDateString('en-US', {
       <div class="flex flex-wrap items-center gap-x-4 gap-y-2 mb-8">
         <a
           href="/writing/"
-          class="font-mono text-[11px] uppercase tracking-widest text-fg-tertiary no-underline transition-colors duration-150 hover:text-accent-ink"
+          class="font-mono text-label uppercase tracking-widest text-fg-tertiary no-underline transition-colors duration-150 hover:text-accent-ink"
         >
           Writing
         </a>
-        <span class="font-mono text-[11px] uppercase tracking-widest text-accent-blue">
+        <span class="font-mono text-label uppercase tracking-widest text-accent-blue">
           For {post.data.audience}
         </span>
         {post.data.draft && (
-          <span class="font-mono text-[10px] uppercase tracking-widest text-accent-ink border border-accent/40 rounded-full px-2 py-0.5">
+          <span class="font-mono text-chip uppercase tracking-widest text-accent-ink border border-accent/40 rounded-full px-2 py-0.5">
             Draft
           </span>
         )}
       </div>
 
-      <h1 class="text-3xl lg:text-5xl font-medium leading-[1.08] tracking-tighter max-w-[680px] mb-8">
+      <h1 class="text-3xl lg:text-5xl font-medium leading-display tracking-tighter max-w-headline mb-8">
         {post.data.title}
       </h1>
-      <p class="text-[17px] leading-relaxed text-fg-secondary max-w-[540px]">
+      <p class="text-lead leading-relaxed text-fg-secondary max-w-lead">
         {post.data.dek}
       </p>
-      <p class="font-mono text-[11px] text-fg-tertiary mt-8">{fmt}</p>
+      <p class="font-mono text-label text-fg-tertiary mt-8">{fmt}</p>
     </header>
 
     <!-- BODY -->
@@ -75,20 +75,20 @@ const fmt = post.data.date.toLocaleDateString('en-US', {
   {siblings.length > 0 && (
     <section class="fade-in pt-6 pb-20">
       <hr class="border-t border-rule mb-10" />
-      <p class="font-mono text-[11px] uppercase tracking-widest text-fg-tertiary mb-8">
+      <p class="font-mono text-label uppercase tracking-widest text-fg-tertiary mb-8">
         The other vantage points
       </p>
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-[760px]">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-grid">
         {siblings.map((p) => (
           <a
             href={`/writing/${p.id}/`}
             class="group block border border-rule p-6 no-underline transition-colors duration-150 hover:border-fg"
           >
-            <p class="font-mono text-[11px] uppercase tracking-widest text-accent-blue mb-3">
+            <p class="font-mono text-label uppercase tracking-widest text-accent-blue mb-3">
               For {p.data.audience}
             </p>
-            <p class="text-[17px] font-medium tracking-tight leading-snug mb-2">{p.data.title}</p>
-            <p class="text-[13px] leading-relaxed text-fg-tertiary">{p.data.dek}</p>
+            <p class="text-lead font-medium tracking-tight leading-snug mb-2">{p.data.title}</p>
+            <p class="text-meta leading-relaxed text-fg-tertiary">{p.data.dek}</p>
           </a>
         ))}
       </div>

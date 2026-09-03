@@ -41,7 +41,7 @@ const currentPath = Astro.url.pathname;
           <li>
             <a
               href={item.href}
-              class="block py-2.5 text-[15px] text-fg-secondary no-underline transition-colors duration-150 hover:text-accent-ink"
+              class="block py-2.5 text-ui text-fg-secondary no-underline transition-colors duration-150 hover:text-accent-ink"
             >
               {item.label}
             </a>
@@ -58,7 +58,7 @@ const currentPath = Astro.url.pathname;
               href={item.href}
               aria-current={isActive(currentPath, item.href) ? 'page' : undefined}
               class:list={[
-                'block py-2.5 text-[15px] no-underline transition-colors duration-150 hover:text-accent-ink',
+                'block py-2.5 text-ui no-underline transition-colors duration-150 hover:text-accent-ink',
                 isActive(currentPath, item.href) ? 'text-fg font-medium' : 'text-fg-secondary',
               ]}
             >
@@ -74,7 +74,7 @@ const currentPath = Astro.url.pathname;
         href={social.href}
         target="_blank"
         rel="noopener"
-        class="block py-2.5 font-mono text-[13px] text-fg-tertiary no-underline transition-colors duration-150 hover:text-accent-ink"
+        class="block py-2.5 font-mono text-meta text-fg-tertiary no-underline transition-colors duration-150 hover:text-accent-ink"
       >
         {social.label}
       </a>
