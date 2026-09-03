@@ -25,7 +25,7 @@ const fmt = (d: Date) =>
     <p class="font-mono text-[11px] uppercase tracking-widest text-fg-tertiary mb-8">Writing</p>
     <h1 class="text-4xl lg:text-6xl font-medium leading-[1.05] tracking-tighter max-w-[680px] mb-10">
       One shift,<br />
-      <span class="text-fg-tertiary">three vantage points.</span>
+      <span class="text-fg-faint">three vantage points.</span>
     </h1>
     <p class="text-[17px] leading-relaxed text-fg-secondary max-w-[540px]">
       The move to open protocols is the same move for everyone, and a completely
@@ -48,7 +48,7 @@ const fmt = (d: Date) =>
 
         <div class="max-w-[560px]">
           <h2 class="text-xl lg:text-2xl font-medium tracking-tight leading-snug mb-3">
-            <a href={`/writing/${p.id}/`} class="no-underline transition-colors duration-150 hover:text-accent">
+            <a href={`/writing/${p.id}/`} class="no-underline transition-colors duration-150 hover:text-accent-ink">
               {p.data.title}
             </a>
           </h2>
@@ -62,7 +62,7 @@ const fmt = (d: Date) =>
               Read &rarr;
             </a>
             {p.data.draft && (
-              <span class="font-mono text-[10px] uppercase tracking-widest text-accent border border-accent/40 rounded-full px-2 py-0.5">
+              <span class="font-mono text-[10px] uppercase tracking-widest text-accent-ink border border-accent/40 rounded-full px-2 py-0.5">
                 Draft
               </span>
             )}

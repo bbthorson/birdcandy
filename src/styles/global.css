@@ -3,16 +3,52 @@
 @theme {
   --color-fg: #111;
   --color-fg-secondary: #666;
-  --color-fg-tertiary: #999;
+  /* Small meta text (11-13px mono labels). Was #999, which sat at 2.6:1 —
+     below the 4.5:1 needed at these sizes. Now 4.7:1. */
+  --color-fg-tertiary: #6e6e68;
+  /* Large decorative text only — the greyed second half of a headline.
+     3.2:1, which clears the 3:1 bar that applies at 24px+. */
+  --color-fg-faint: #8a8a84;
   --color-bg: #f5f5f3;
   --color-rule: #ddd;
 
   /* candy accents — pink is the treat, blue is the platform. Use sparingly. */
   --color-accent: #ff3d8b;
   --color-accent-blue: #2b5cff;
+  /* The brand pink is 3.1:1 — fine for borders and fills (3:1 UI bar), not
+     for text. This is the same pink deepened to 4.5:1 for small accent text
+     and link hovers. In dark mode the lifted brand pink already passes, so
+     the two converge. */
+  --color-accent-ink: #d81b60;
 
   --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   --font-mono: 'JetBrains Mono', ui-monospace, 'Cascadia Code', monospace;
+}
+
+/* Dark theme. Every utility resolves through these vars, so redefining the
+   tokens is the whole implementation. Follows the OS — no manual toggle,
+   which is what favicon.svg already assumed. */
+:root {
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    color-scheme: dark;
+
+    --color-fg: #f2f2ef;
+    --color-fg-secondary: #a0a09a;
+    --color-fg-tertiary: #82827c;
+    --color-fg-faint: #73736d;
+    --color-bg: #111110;
+    --color-rule: #2e2e2b;
+
+    /* Both accents are lifted: #ff3d8b and especially #2b5cff are too dark
+       against a near-black ground to stay legible. */
+    --color-accent: #ff5c9e;
+    --color-accent-blue: #7d9bff;
+    --color-accent-ink: #ff5c9e;
+  }
 }
 
 @layer base {
@@ -33,15 +69,56 @@
   }
 }
 
-.fade-in {
+.js .fade-in {
   opacity: 0;
   transform: translateY(16px);
   transition: opacity 0.6s ease, transform 0.6s ease;
 }
 
-.fade-in.visible {
+.js .fade-in.visible {
   opacity: 1;
   transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .js .fade-in {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Keyboard focus. The default outline disappears against the cream ground,
+   so give it the accent and enough offset to read. */
+:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  z-index: 100;
+  background: var(--color-fg);
+  color: var(--color-bg);
+  padding: 0.75rem 1.25rem;
+  font-size: 0.875rem;
+  text-decoration: none;
+}
+
+.skip-link:focus {
+  left: 0;
 }
 
 /* ---------------------------------------------------------------
@@ -102,7 +179,7 @@
 }
 
 .prose a:hover {
-  color: var(--color-accent);
+  color: var(--color-accent-ink);
   border-bottom-color: var(--color-accent);
 }
 
@@ -128,7 +205,7 @@
   font-size: 0.6875rem;
   text-transform: uppercase;
   letter-spacing: 0.1em;
-  color: var(--color-accent);
+  color: var(--color-accent-ink);
 }
 
 .prose blockquote em {

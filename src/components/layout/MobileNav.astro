@@ -1,0 +1,124 @@
+---
+import Logo from './Logo.astro';
+import { sections, pages, social, isActive } from './nav';
+
+const currentPath = Astro.url.pathname;
+---
+
+<div class="lg:hidden sticky top-0 z-50" data-mobile-nav>
+  <!-- BAR -->
+  <div class="flex items-center justify-between border-b border-rule bg-bg px-6 py-4">
+    <Logo class="h-7 w-7" />
+
+    <button
+      type="button"
+      class="-mr-2 flex h-10 w-10 items-center justify-center text-fg-secondary transition-colors duration-150 hover:text-fg"
+      aria-label="Menu"
+      aria-expanded="false"
+      aria-controls="mobile-menu"
+      data-menu-toggle
+    >
+      <svg class="h-5 w-5" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true" data-icon-open>
+        <line x1="2" y1="6" x2="18" y2="6"></line>
+        <line x1="2" y1="14" x2="18" y2="14"></line>
+      </svg>
+      <svg class="h-5 w-5 hidden" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true" data-icon-close>
+        <line x1="4" y1="4" x2="16" y2="16"></line>
+        <line x1="16" y1="4" x2="4" y2="16"></line>
+      </svg>
+    </button>
+  </div>
+
+  <!-- PANEL -->
+  <div
+    id="mobile-menu"
+    class="hidden border-b border-rule bg-bg px-6 pb-10 pt-6"
+    data-menu-panel
+  >
+    <nav>
+      <ul class="flex flex-col list-none p-0 m-0">
+        {sections.map((item) => (
+          <li>
+            <a
+              href={item.href}
+              class="block py-2.5 text-[15px] text-fg-secondary no-underline transition-colors duration-150 hover:text-accent-ink"
+            >
+              {item.label}
+            </a>
+          </li>
+        ))}
+      </ul>
+
+      <div class="my-5 h-px w-8 bg-rule"></div>
+
+      <ul class="flex flex-col list-none p-0 m-0">
+        {pages.map((item) => (
+          <li>
+            <a
+              href={item.href}
+              aria-current={isActive(currentPath, item.href) ? 'page' : undefined}
+              class:list={[
+                'block py-2.5 text-[15px] no-underline transition-colors duration-150 hover:text-accent-ink',
+                isActive(currentPath, item.href) ? 'text-fg font-medium' : 'text-fg-secondary',
+              ]}
+            >
+              {item.label}
+            </a>
+          </li>
+        ))}
+      </ul>
+
+      <div class="my-5 h-px w-8 bg-rule"></div>
+
+      <a
+        href={social.href}
+        target="_blank"
+        rel="noopener"
+        class="block py-2.5 font-mono text-[13px] text-fg-tertiary no-underline transition-colors duration-150 hover:text-accent-ink"
+      >
+        {social.label}
+      </a>
+    </nav>
+  </div>
+</div>
+
+<script>
+  const root = document.querySelector<HTMLElement>('[data-mobile-nav]');
+  if (root) {
+    const toggle = root.querySelector<HTMLButtonElement>('[data-menu-toggle]')!;
+    const panel = root.querySelector<HTMLElement>('[data-menu-panel]')!;
+    const iconOpen = root.querySelector<SVGElement>('[data-icon-open]')!;
+    const iconClose = root.querySelector<SVGElement>('[data-icon-close]')!;
+
+    const setOpen = (open: boolean) => {
+      panel.hidden = !open;
+      panel.classList.toggle('hidden', !open);
+      iconOpen.classList.toggle('hidden', open);
+      iconClose.classList.toggle('hidden', !open);
+      toggle.setAttribute('aria-expanded', String(open));
+      toggle.setAttribute('aria-label', open ? 'Close menu' : 'Menu');
+    };
+
+    const isOpen = () => toggle.getAttribute('aria-expanded') === 'true';
+
+    toggle.addEventListener('click', () => setOpen(!isOpen()));
+
+    // Anchor links to the current page don't navigate, so close explicitly.
+    panel.addEventListener('click', (e) => {
+      if ((e.target as HTMLElement).closest('a')) setOpen(false);
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && isOpen()) {
+        setOpen(false);
+        toggle.focus();
+      }
+    });
+
+    // The sidebar takes over at lg; don't leave a stale open panel behind it.
+    const lg = window.matchMedia('(min-width: 1024px)');
+    lg.addEventListener('change', (e) => {
+      if (e.matches) setOpen(false);
+    });
+  }
+</script>
